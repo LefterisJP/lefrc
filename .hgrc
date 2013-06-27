@@ -1,0 +1,47 @@
+[ui]
+username = Lefteris Karapetsas<lefteris.karapetsas@iptego.com>
+#to make sure that mercurial does not disable ssh
+ssh = ssh -C 
+
+
+[merge-patterns]
+**debian/changelog = internal:local
+
+[extensions]
+#for pretty colors in hg output
+color = 
+#for hg rebase
+rebase =  
+#for a graphical log in hg log
+graphlog =  
+#for hg transplant which is like a cherry-pick
+transplant =
+# for enabling pager (look below to see what it does) 
+pager = 
+#for hg shelve
+hgshelve = ~/.hgext/hgshelve/hgshelve.py
+
+
+#the pager extension allows for git log like logs
+[pager] 
+pager = LESS='FSRX' less
+attend = log graphlog diff #used by graph log
+
+[defaults]
+log = -f
+
+
+[ui]
+merge = emacs
+[merge-tools]
+emacs.args = -q --eval "(require 'ediff)" --eval "(setq ediff-window-setup-function 'ediff-setup-windows-plain)" --eval "(add-hook 'ediff-quit-hook 'save-buffers-kill-emacs)" --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
+
+#configuring the colors that hg output
+[color] 
+mode = auto
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
