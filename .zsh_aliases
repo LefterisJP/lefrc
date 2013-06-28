@@ -1,6 +1,5 @@
 #-----------------------------
-#----Lefteris' bash aliases---
+#----Lefteris zsh aliases  ---
 #-----------------------------
 
-alias ls='ls --color=auto'
 alias ec='emacsclient -n'

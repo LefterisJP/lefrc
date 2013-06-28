@@ -34,3 +34,6 @@ export PATH="$HOME/.local/bin:$PATH"
 . ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 
+# source my aliases
+source ~/.zsh_aliases
+
