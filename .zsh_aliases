@@ -2,4 +2,11 @@
 #----Lefteris zsh aliases  ---
 #-----------------------------
 
-alias ec='emacsclient -n'
+#emacs client in the terminal
+if [[ `hostname` == "archlenovo" ]]; then
+   alias ect='emacsclient -nt --socket-name /tmp/emacs1000/server'
+   alias ecw='emacsclient -n --socket-name /tmp/emacs1000/server'
+else
+   alias ect='emacsclient -nt'
+   alias ecw='emacsclient -n'
+fi
