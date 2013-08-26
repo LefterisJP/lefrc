@@ -12,12 +12,20 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 ###
-# Configuration only for home dev (arch)
+# Configuration only for work laptop (arch)
 ###
 if [[ `hostname` == "archlenovo" ]]; then
 #add powerline.zsh for arch 
 . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
+
+###
+# Configuration only for home dev (arch) 
+###
+if [[ `hostname` == "archdesktop" ]]; then
+. /usr/share/zsh/site-contrib/powerline.zsh
+fi
+
 ###
 # Configuration ONLY for devwork
 ###
