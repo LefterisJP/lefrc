@@ -44,11 +44,11 @@ remote = green
   guitool = ediff
 
 [difftool "ediff"]
-  cmd = ~/BASH_SETTINGS/ediff.sh $LOCAL $REMOTE $MERGED
+  cmd = ~/.lefrc/ediff.sh $LOCAL $REMOTE $MERGED
 
 [merge]
   tool = ediff
 
 [mergetool "ediff"]
-  cmd = ~/BASH_SETTINGS/ediff.sh $LOCAL $REMOTE $MERGED $BASE
+  cmd = ~/.lefrc/ediff.sh $LOCAL $REMOTE $MERGED $BASE
   trustExitCode = true
