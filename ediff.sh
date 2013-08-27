@@ -34,17 +34,14 @@ else
     _EVAL="${_EDIFF} \"${_LOCAL}\" \"${_REMOTE}\" nil \"${_MERGED}\""
 fi
 
-# REMOVING the terminal distinction. Wanna have it in gui mode like all the rest
-# # console vs. X
-# if [ "${TERM}" = "linux" ]; then
-#     unset DISPLAY
-#     _EMACSCLIENTOPTS="-t"
-# else
-#     _EMACSCLIENTOPTS="-c"
-# fi
+# console vs. X
+if [ "${TERM}" = "linux" ]; then
+    unset DISPLAY
+    _EMACSCLIENTOPTS="-t"
+else
+    _EMACSCLIENTOPTS="-c"
+fi
 
-# simplifying the options
-# _EMACSCLIENTOPTS="-t -c"
 
 # run emacsclient
 ${_EMACSCLIENT} ${_EMACSCLIENTOPTS} -a "" -e "(${_EVAL})" 2>&1
