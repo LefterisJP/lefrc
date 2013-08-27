@@ -15,12 +15,13 @@ export PATH="$HOME/.local/bin:$PATH"
 # disabling zsh line editor for tramp connecting to this as remote
 # check here for more info: http://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
 [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
-#and finally exit and DO NOT continue to the rest of the zsh initialization
-exit
 fi
 
 
-#make sure we got 256 color term
+#from here and below it's for anything other than the virtual machine at work
+if [[ `hostname` != "devwork" ]]; then
+
+#make sure we got 256 color term 
 export TERM=xterm-256color
 #
 # Executes commands at the start of an interactive session.
@@ -51,3 +52,4 @@ fi
 # source my aliases
 source ~/.zsh_aliases
 
+fi #end of the non-virtual machine at work case
