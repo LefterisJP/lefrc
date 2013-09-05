@@ -4,3 +4,4 @@ cp .zsh_aliases ~
 cp .gitconfig ~
 cp .zshrc ~
 cp .hgrc ~
+cp .ackrc ~
