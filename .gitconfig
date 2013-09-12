@@ -52,3 +52,8 @@ remote = green
 [mergetool "ediff"]
   cmd = ~/.lefrc/ediff.sh $LOCAL $REMOTE $MERGED $BASE
   trustExitCode = true
+
+[push]
+	default = current
+[pull]
+	default = current
