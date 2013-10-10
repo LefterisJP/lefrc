@@ -5,3 +5,6 @@ cp .gitconfig ~
 cp .zshrc ~
 cp .hgrc ~
 cp .ackrc ~
+cp .xinitrc ~
+cp ./i3config ~/.i3/config
+cp ./i3afterconfig.sh ~
