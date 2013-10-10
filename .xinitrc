@@ -7,6 +7,9 @@ if [ $HOSTNAME == "archdesktop" ]; then
     udiskie &
 fi
 
+# if Xresources is there load it
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
 # generate machine specific i3 configuration file
 cat ~/.i3/config.template > ~/.i3/config
 # for the laptop at work, setup the dual monitor setup
