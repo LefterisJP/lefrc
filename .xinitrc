@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+# for the desktop make sure that udiskie is running.
+# TODO: Maybe do this in the work laptop too?
+if [ $HOSTNAME == "archdesktop" ]; then
+    udiskie &
+fi
+
 # generate machine specific i3 configuration file
 cat ~/.i3/config.template > ~/.i3/config
 # for the laptop at work, setup the dual monitor setup
