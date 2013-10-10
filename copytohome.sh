@@ -6,5 +6,8 @@ cp .zshrc ~
 cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
-cp ./i3config ~/.i3/config
+cp ./i3homeconfig.template ~/.i3/home_config.template
+cp ./i3workconfig.template ~/.i3/worklenovo_config.template
+cp ./i3config_epilogue.template ~/.i3/config_epilogue.template
+cp ./i3config.template ~/.i3/config.template
 cp ./i3afterconfig.sh ~

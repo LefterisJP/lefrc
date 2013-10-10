@@ -152,6 +152,3 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
-
-# execute the after configuration script
-exec ~/i3afterconfig.sh
