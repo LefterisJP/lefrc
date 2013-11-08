@@ -23,12 +23,12 @@ if [[ `hostname` != "devwork" ]]; then
 
 #make sure we got 256 color term 
 export TERM=xterm-256color
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+
+#add local bin to the path
+if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
+  source "${ZDOTDIR:-$HOME}/.local/bin"
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"

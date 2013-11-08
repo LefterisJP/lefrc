@@ -12,3 +12,6 @@ cp ./i3workconfig.template ~/.i3/worklenovo_config.template
 cp ./i3config_epilogue.template ~/.i3/config_epilogue.template
 cp ./i3config.template ~/.i3/config.template
 cp ./i3afterconfig.sh ~
+
+cp ./conky-i3-bar.sh ~/.local/bin/
+cp ./.conkyrc ~
