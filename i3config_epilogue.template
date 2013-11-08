@@ -1,2 +1,2 @@
 # execute the after configuration script
-exec ~/i3afterconfig.sh
+exec ~/.local/bin/i3afterconfig.sh

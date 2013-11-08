@@ -26,7 +26,7 @@ export TERM=xterm-256color
 
 #add local bin to the path
 if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
-  source "${ZDOTDIR:-$HOME}/.local/bin"
+  export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
 fi
 
 # Source Prezto.
