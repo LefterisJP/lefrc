@@ -39,6 +39,11 @@ TEXT
  [
 {"full_text": " ❤ $acpitemp°C [$cpu%] ","color": 
               ${if_match ${acpitemp}<40}"\#007000"${else}"\#E60000"${endif}},
+{"full_text": " I/O: $diskio", "color":"\#D683FF"},
+{"full_text": " GPU: ${execi 60 nvidia-smi -q -d TEMPERATURE | grep Gpu | cut -c39-40}°C",
+              "color": "\#3E63D1"},
+{"full_text": " GPU ≣ [${execi 60 bc -l <<< "($(nvidia-smi -q -d memory | grep Used | cut -c39-42) / $(nvidia-smi -q -d memory | grep Total | cut -c39-42))*100" | cut -c1-5}]%",
+              "color": "\#5475D6"},
 {"full_text": " ≣ [$memeasyfree] ", "color":"\#B58900"},
 {"full_text": " ⛁ / [${fs_free /}] ", "color": "\#99CC33"},
 {"full_text": " ⛁ /home [${fs_free /home}] ", "color": "\#99CC33"},

@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # for the desktop make sure that udiskie is running.
-# TODO: Maybe do this in the work laptop too?
 if [ $HOSTNAME == "archdesktop" ]; then
+    # make sure udiskie is running
     udiskie &
+    # also set the 120HZ resolution
+    xrandr --output DVI-I-1 --mode 0x281
 fi
 
 # generate i3 config from the templates
-exec ~/.local/bin/gen-i3-config.sh
+~/.local/bin/gen-i3-config.sh
 
 # if Xresources is there load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
