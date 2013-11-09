@@ -2,7 +2,6 @@
 cp .bashrc ~
 cp .zsh_aliases ~
 cp .gitconfig ~
-cp .zshrc ~
 cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
@@ -15,6 +14,7 @@ fi
 mkdir "$HOME/.zprezto"
 cp -r ./prezto/* "$HOME/.zprezto"
 zsh ./prezto_new_conf.zsh
+cp .zshrc ~
 
 # i3 related stuff
 cp ./i3homeconfig.template ~/.i3/home_config.template

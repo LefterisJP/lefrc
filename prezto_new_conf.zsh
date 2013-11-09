@@ -1,4 +1,4 @@
-#remove the previous symlinks if existing
+# remove the previous symlinks if existing
 rm -f "${ZDOTDIR:-$HOME}"/.zlogin
 rm -f "${ZDOTDIR:-$HOME}"/.zlogout
 rm -f "${ZDOTDIR:-$HOME}"/.zpreztorc
