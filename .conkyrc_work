@@ -38,18 +38,15 @@ TEXT
 
  [
 {"full_text": " ❤ $acpitemp°C [$cpu%] ","color": 
-              ${if_match ${acpitemp}<40}"\#007000"${else}"\#E60000"${endif}},
+              ${if_match ${acpitemp}<50}"\#007000"${else}"\#E60000"${endif}},
 {"full_text": " I/O: $diskio", "color":"\#D683FF"},
-{"full_text": " GPU: ${execi 60 nvidia-smi -q -d TEMPERATURE | grep Gpu | cut -c39-40}°C",
-              "color": "\#3E63D1"},
-{"full_text": " GPU ≣ [${execi 60 bc -l <<< "($(nvidia-smi -q -d memory | grep Used | cut -c39-42) / $(nvidia-smi -q -d memory | grep Total | cut -c39-42))*100" | cut -c1-5}]%",
-              "color": "\#5475D6"},
 {"full_text": " ≣ [$memeasyfree] ", "color":"\#B58900"},
 {"full_text": " ⛁ / [${fs_free /}] ", "color": "\#99CC33"},
 {"full_text": " ⛁ /home [${fs_free /home}] ", "color": "\#99CC33"},
-{"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#33CC99"},
-{"full_text": " ☍ eth0 [${addr eth0}] ","color":"\#33CC99"},
-{"full_text": " ☇ [$battery $battery_percent%] ","color":"\#9933CC"},
+{"full_text": " ≈ ${wireless_essid wlp3s0} [${wireless_link_qual_perc wlp3s0}%] ","color":"\#33CC99"},
+{"full_text": " ☍ enp0s25 [${addr enp0s25}] ","color":"\#33CC99"},
+{"full_text": " ☇ [$battery $battery_percent%] ", "color":
+              ${if_match ${battery_percent}<10}"\#E60000"${else}"\#9933CC"${endif}},
 {"full_text": " up [${uptime}] ", "color": "\#3399CC"},
 {"full_text": " ${time %Y-%m-%d %H:%M:%S} "}
 

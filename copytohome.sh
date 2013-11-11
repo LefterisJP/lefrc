@@ -29,8 +29,9 @@ cp ./i3exit.sh ~/.local/bin/i3exit.sh
 cp ./conky-i3-bar.sh ~/.local/bin/
 if [ $HOSTNAME == "archlenovo" ]; then
     cp ./.conkyrc_work ~/.conkyrc
+else
+    cp ./.conkyrc_home ~/.conkyrc
 fi
-cp ./.conkyrc_home ~/.conkyrc
 
 #after copying the files, generate the i3 config
 exec ~/.local/bin/gen-i3-config.sh
