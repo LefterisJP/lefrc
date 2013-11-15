@@ -1,5 +1,5 @@
 [ui]
-username = Lefteris Karapetsas<lefteris.karapetsas@iptego.com>
+username = Lefteris Karapetsas<eleftherios.karapetsas@oracle.com>
 #to make sure that mercurial does not disable ssh
 ssh = ssh -C 
 
