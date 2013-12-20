@@ -40,6 +40,14 @@ fi
 if [[ `hostname` == "archlenovo" ]]; then
 #add powerline.zsh for arch 
 . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  #depending on the connected network set the proxy environment variable
+  if [[ `nmcli conn status` =~ ".*Oracle lan.*" ]]; then
+      export http_proxy=http://emea-proxy.uk.oracle.com:80
+      export http_proxy=http://emea-proxy.uk.oracle.com:80
+  else
+      export http_proxy= 
+      export http_proxy= 
+  fi
 fi
 
 ###
