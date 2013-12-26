@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# for the desktop make sure that udiskie is running.
+# make sure udiskie is running, for usb auto detection
+udiskie &
+# for the desktop set the resolution 
 if [ $HOSTNAME == "archdesktop" ]; then
-    # make sure udiskie is running
-    udiskie &
     # also set the 120HZ resolution
     xrandr --output DVI-I-1 --mode 0x281
 fi
