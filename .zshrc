@@ -43,10 +43,10 @@ if [[ `hostname` == "archlenovo" ]]; then
   #depending on the connected network set the proxy environment variable
   if [[ `nmcli conn status` =~ ".*Oracle lan.*" ]]; then
       export http_proxy=http://emea-proxy.uk.oracle.com:80
-      export http_proxy=http://emea-proxy.uk.oracle.com:80
+      export https_proxy=http://emea-proxy.uk.oracle.com:80
   else
       export http_proxy= 
-      export http_proxy= 
+      export https_proxy= 
   fi
 fi
 
