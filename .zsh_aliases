@@ -3,6 +3,7 @@
 #-----------------------------
 
 alias ls='ls --color'
+alias gdbbt="gdb -q -n -ex 'thread apply all bt' -batch"
 
 #emacs client in the terminal
 if [[ `hostname` == "archlenovo" ]]; then
