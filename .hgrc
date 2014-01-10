@@ -8,6 +8,8 @@ ssh = ssh -C
 **debian/changelog = internal:local
 
 [extensions]
+#for cleaning untracked files from the working directory
+purge =
 #for pretty colors in hg output
 color = 
 #for hg rebase
