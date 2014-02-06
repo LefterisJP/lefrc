@@ -55,6 +55,8 @@ fi
 ###
 if [[ `hostname` == "archdesktop" ]]; then
 . /usr/share/zsh/site-contrib/powerline.zsh
+  # add android tools to the path
+  export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
 fi
 
 # source my aliases
