@@ -40,13 +40,21 @@ fi
 if [[ `hostname` == "archlenovo" ]]; then
 #add powerline.zsh for arch 
 . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-  #depending on the connected network set the proxy environment variable
+  #depending on if we are in the Oracle network do stuff
   if [[ `nmcli conn status` =~ ".*Oracle lan.*" ]]; then
       export http_proxy=http://emea-proxy.uk.oracle.com:80
       export https_proxy=http://emea-proxy.uk.oracle.com:80
+      export ftp_proxy=$http_proxy
+      export sftp_proxy=$http_proxy
+      export ssh_tunnel_port=7652
+      # create an alias for emacs starting with tsocks, going via the socks5 proxy
+      alias tsocks_emacs='https_proxy="socks5://localhost:${ssh_tunnel_port}" tsocks emacs'
+      # make sure that git commands always go via the socks proxy
+      git config --global core.proxy socks5://localhost:7652
   else
       export http_proxy= 
       export https_proxy= 
+      git config --global --unset core.proxy
   fi
 fi
 
