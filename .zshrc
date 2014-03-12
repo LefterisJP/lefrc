@@ -52,8 +52,10 @@ if [[ `hostname` == "archlenovo" ]]; then
       export ftp_proxy=$http_proxy
       export sftp_proxy=$http_proxy
       export ssh_tunnel_port=7652
+      # do not go through the proxy for the following
+      export no_proxy="localhost,127.0.0.1,127.0.0.0/8,localaddress"
       # create an alias for starting things via tsocks and the socks5 proxy
-      alias prx ='http_proxy="socks5://localhost:${ssh_tunnel_port}" https_proxy="socks5://localhost:${ssh_tunnel_port}" tsocks'
+      alias prx='http_proxy="socks5://localhost:${ssh_tunnel_port}" https_proxy="socks5://localhost:${ssh_tunnel_port}" tsocks'
   else
       export http_proxy= 
       export https_proxy= 
