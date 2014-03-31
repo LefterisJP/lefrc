@@ -22,7 +22,7 @@ transplant =
 pager = 
 #for hg shelve
 hgshelve = ~/.hgext/hgshelve/hgshelve.py
-
+xgraft = ~/.hgext/xgraft/xgraft.py
 
 #the pager extension allows for git log like logs
 [pager] 
