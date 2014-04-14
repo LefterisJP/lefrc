@@ -7,6 +7,11 @@ cp .ackrc ~
 cp .xinitrc ~
 cp .Xresources ~
 
+#copy work only stuff
+if [[ `hostname` == "archlenovo" ]]; then
+    cp -r work_only/* ~
+fi
+
 # Prepare Prezto and ZSH
 if [ -d "$HOME/.zprezto" ]; then
   rm -rf "$HOME/.zprezto"
