@@ -46,7 +46,9 @@ fi
 # Configuration for both work laptop and its chroot
 ###
 if [[ `hostname` == "archlenovo" ]]; then
-  if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" || `nmcli conn status` =~ ".*Oracle lan.*" ]]; then
+  if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" || 
+              `nmcli conn status` =~ ".*Oracle lan.*" ||
+              `nmcli conn status` =~ "clear" ]]; then
       export http_proxy=http://emea-proxy.uk.oracle.com:80
       export https_proxy=http://emea-proxy.uk.oracle.com:80
       export ftp_proxy=$http_proxy
@@ -76,8 +78,6 @@ fi
 # Configuration only for home dev (arch)
 ###
 if [[ `hostname` == "archdesktop" ]]; then
-   # keychain for the desktop
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
    # temporarily and until powerline package gets released for python 3.4
     export PYTHONPATH="/usr/lib/python3.3/site-packages/:$PYTHONPATH"
     . /usr/share/zsh/site-contrib/powerline.zsh
