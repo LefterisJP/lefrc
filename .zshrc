@@ -76,6 +76,8 @@ fi
 # Configuration only for home dev (arch)
 ###
 if [[ `hostname` == "archdesktop" ]]; then
+   # keychain for the desktop
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
    # temporarily and until powerline package gets released for python 3.4
     export PYTHONPATH="/usr/lib/python3.3/site-packages/:$PYTHONPATH"
     . /usr/share/zsh/site-contrib/powerline.zsh
