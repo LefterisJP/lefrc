@@ -66,6 +66,11 @@ if [[ `hostname` == "archlenovo" ]]; then
   fi
 fi
 
+# if we got keychain installed add our ssh key there
+if hash keychain 2>/dev/null; then
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+fi
+
 ###
 # Configuration only for work laptop
 ###
