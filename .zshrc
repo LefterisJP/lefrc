@@ -59,10 +59,10 @@ if [[ `hostname` == "archlenovo" ]]; then
       # create an alias for starting things via tsocks and the socks5 proxy
       alias prx='http_proxy="socks5://localhost:${ssh_tunnel_port}" https_proxy="socks5://localhost:${ssh_tunnel_port}" tsocks'
   else
-      export http_proxy=
-      export https_proxy=
+      unset http_proxy
+      unset https_proxy
       git config --global --unset core.proxy
-      git config --global http.proxy ''
+      git config --global --unset http.proxy
   fi
 fi
 
