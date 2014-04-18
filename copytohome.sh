@@ -21,6 +21,12 @@ cp -r ./prezto/* "$HOME/.zprezto"
 zsh ./prezto_new_conf.zsh
 cp .zshrc ~
 
+# copy local user configurations
+if [ ! -d "$HOME/.config" ]; then
+    mkdir "$HOME/.config"
+fi
+cp -r .config/powerline "$HOME/.config/"
+
 # i3 related stuff
 cp ./i3homeconfig.template ~/.i3/home_config.template
 cp ./i3workconfig.template ~/.i3/worklenovo_config.template
