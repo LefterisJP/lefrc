@@ -6,10 +6,7 @@ alias ls='ls --color'
 alias gdbbt="gdb -q -n -ex 'thread apply all bt' -batch"
 
 #emacs client in the terminal
-if [[ `hostname` == "archlenovo" ]]; then
-   alias ect='emacsclient -nt --socket-name /tmp/emacs1000/server'
-   alias ecw='emacsclient -n --socket-name /tmp/emacs1000/server'
-else
-   alias ect='emacsclient -nt'
-   alias ecw='emacsclient -n'
-fi
+alias ect='emacsclient -n --socket-name /tmp/emacs1000/server'
+# gui emacs client
+alias ecw='emacsclient -c --socket-name /tmp/emacs1000/server'
+
