@@ -106,4 +106,4 @@ fi
 export ALTERNATE_EDITOR=""
 # normally speciying the socket should not be needed but I think that either
 # emacs --daemon or emacslient has a bug when starting emacs from systemd
-export EDITOR=ect
+export EDITOR=ecw

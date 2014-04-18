@@ -40,11 +40,11 @@ if [ ! -d "$HOME/.local/bin" ]; then
     mkdir "$HOME/.local/bin"
 fi
 
-# i3 related stuff
+# copy i3 configs folder
 cp -r .i3/* ~/.i3/
+# copy some utils
 cp -r .local/bin/* ~/.local/bin/
 
-cp ./conky-i3-bar.sh ~/.local/bin/
 if [[ `hostname` == "archlenovo" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
 else

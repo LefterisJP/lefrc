@@ -3,12 +3,13 @@
 # ask the user (me) if I want to replace something
 function ask-for-replace () {
     while true; do
+    yn="" # maybe stupid? So that vared does not echo back last value
     vared -cp "Do you wish to replace $1?" yn
-    echo "2nd is $2"
+    echo "\n"
     case $yn in
         [Yy]* ) cp etc/$1 $2; break;;
         [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
+        * ) echo "Please answer yes or no.\n";;
     esac
     done
 }
@@ -21,6 +22,9 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     fi
 
     ask-for-replace "slim.conf" /etc/slim.conf
+    ask-for-replace "dmenu_run" /usr/bin/dmenu_run
+
+    echo "Done!"
 else
     echo "Please run this script with super user privileges"
 fi
