@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # this script has to be run from the directory where I keep all the rc files
 cp .bashrc ~
 cp .zsh_aliases ~
@@ -28,6 +30,15 @@ fi
 cp -r .config/powerline "$HOME/.config/"
 
 # i3 related stuff
+if [ ! -d "$HOME/.i3" ]; then
+    mkdir "$HOME/.i3"
+fi
+if [ ! -d "$HOME/.local" ]; then
+    mkdir "$HOME/.local"
+fi
+if [ ! -d "$HOME/.local/bin" ]; then
+    mkdir "$HOME/.local/bin"
+fi
 cp ./i3homeconfig.template ~/.i3/home_config.template
 cp ./i3workconfig.template ~/.i3/worklenovo_config.template
 cp ./i3config_epilogue.template ~/.i3/config_epilogue.template
@@ -38,7 +49,7 @@ cp ./i3exit.sh ~/.local/bin/i3exit.sh
 
 # i3 bar and conky
 cp ./conky-i3-bar.sh ~/.local/bin/
-if [ $HOSTNAME == "archlenovo" ]; then
+if [[ `hostname` == "archlenovo" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
 else
     cp ./.conkyrc_home ~/.conkyrc

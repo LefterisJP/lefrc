@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # make sure udiskie is running, for usb auto detection
 udiskie &
