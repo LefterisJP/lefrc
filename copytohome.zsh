@@ -29,7 +29,7 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 cp -r .config/powerline "$HOME/.config/"
 
-# i3 related stuff
+
 if [ ! -d "$HOME/.i3" ]; then
     mkdir "$HOME/.i3"
 fi
@@ -39,15 +39,11 @@ fi
 if [ ! -d "$HOME/.local/bin" ]; then
     mkdir "$HOME/.local/bin"
 fi
-cp ./i3homeconfig.template ~/.i3/home_config.template
-cp ./i3workconfig.template ~/.i3/worklenovo_config.template
-cp ./i3config_epilogue.template ~/.i3/config_epilogue.template
-cp ./i3config.template ~/.i3/config.template
-cp ./i3afterconfig.sh ~/.local/bin/
-cp ./gen-i3-config.sh ~/.local/bin/
-cp ./i3exit.sh ~/.local/bin/i3exit.sh
 
-# i3 bar and conky
+# i3 related stuff
+cp -r .i3/* ~/.i3/
+cp -r .local/bin/* ~/.local/bin/
+
 cp ./conky-i3-bar.sh ~/.local/bin/
 if [[ `hostname` == "archlenovo" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
