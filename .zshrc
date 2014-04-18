@@ -91,14 +91,7 @@ if [[ `hostname` == "archdesktop" ]]; then
 fi
 
 ###
-# The below section is for 2 issues
-#
-# Issue 1: Powerline font not rendering correctly
-# Configuration for .zsh from inside emacs
-# Powerline prompt does not play well from inside emacs. Until a fix is made
-# changing the .zsh prompt when in an emacs terminal
-#
-# Issue 2: commands being echoed back after each typing. As I explain in
+# Issue : commands being echoed back after each typing. As I explain in
 # this blog post: http://blog.refu.co/?p=1277
 # zsh due to prezto configuration was trying to set the terminal window
 # title. *ansi-term* does not know how to handle that and as such echoes
@@ -106,10 +99,6 @@ fi
 # to not work when from inside emacs
 ###
 if [[ -n ${EMACS} ]]; then
-    # Issue 1
-    PROMPT="%n - %2~ > "
-    RPROMPT=
-    # Issue 2
     zstyle ':prezto:module:terminal' auto-title 'no'
 fi
 
