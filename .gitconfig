@@ -3,7 +3,10 @@
 	name = Lefteris Karapetsas
 
 [core]
-    editor = nano
+    # use emacsclient.
+    # Wait for emacs (without the -n argument) to finalize
+    # the commit
+    editor = emacsclient -c --socket-name /tmp/emacs1000/server
 
 # Some aliases suggested by the git cheat sheet
 [alias]
