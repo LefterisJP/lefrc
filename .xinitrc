@@ -19,4 +19,6 @@ fi
 # if Xresources is there load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-exec i3 -V >> ~/.i3/i3log 2>&1
+# used to have a log file. Removed it since it took too much space
+# https://wiki.archlinux.org/index.php/i3
+exec i3
