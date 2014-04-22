@@ -1,4 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
+# If you want to change it to zsh
+# remember to change slim.conf login_cmd
 
 # make sure udiskie is running, for usb auto detection
 udiskie &
