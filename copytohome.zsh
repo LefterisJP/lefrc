@@ -12,6 +12,7 @@ cp .Xresources ~
 #copy work only stuff
 if [[ `hostname` == "archlenovo" ]]; then
     cp -r work_only/* ~
+    cp ssh_config ~/.ssh/config
 fi
 
 # Prepare Prezto and ZSH
