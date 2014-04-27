@@ -8,7 +8,7 @@ cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
 cp .Xresources ~
-cp .keyboard_config.xkb ~/.Xkeymap
+cp keyboard_config.xkb ~/.Xkeymap
 
 #copy work only stuff
 if [[ `hostname` == "archlenovo" ]]; then
