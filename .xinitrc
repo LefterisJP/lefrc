@@ -15,6 +15,9 @@ if [ $HOSTNAME == "archlenovo" ]; then
     syndaemon -t -k -i 2 -d &
 fi
 
+# activate custom xkeymap configuration
+test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
+
 # generate i3 config from the templates
 ~/.local/bin/gen-i3-config.sh
 
