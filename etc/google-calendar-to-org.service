@@ -1,0 +1,13 @@
+[Unit]
+Description=Runs the script that retrieves my google calendar, converts to org mode  and imports it into org
+Wants=timer-hourly.timer
+
+[Service]
+User=lefteris
+Nice=19
+IOSchedulingClass=2
+IOSchedulingPriority=7
+ExecStart=/home/lefteris/.local/bin/org-sync-googlecal.zsh
+
+[Install]
+WantedBy=timer-hourly.target
