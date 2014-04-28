@@ -1,0 +1,13 @@
+[Unit]
+Description=Runs the script that synchronizes my org files with my personal server using git
+Wants=timer-hourly.timer
+
+[Service]
+User=lefteris
+Nice=19
+IOSchedulingClass=2
+IOSchedulingPriority=7
+ExecStart=/home/lefteris/.local/bin/org_sync.zsh
+
+[Install]
+WantedBy=timer-hourly.target

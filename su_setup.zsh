@@ -14,12 +14,26 @@ function ask-for-replace () {
     done
 }
 
-if [[ $UID == 0 || $EUID == 0 ]]; then
-
-    # if emacs does not exist as a systemd service
-    if [[ `systemctl status emacs@lefteris` =~ ".*Loaded: not-found.*" ]]; then
-        cp etc/emacs@.service /etc/systemd/system/emacs@.service
+function systemd-service-query-or-create() {
+    arg=$1
+    # emacs is a special service so the service name is different
+    if [[ $arg == emacs@lefteris ]]; then
+        service_file=${arg%lefteris}
+        service_file=${service_file}.service
+    else
+        service_file=${arg}.service
     fi
+
+    status_result=$(systemctl status $arg)
+    # echo $query
+    # echo $status_result
+    # echo "cp etc/${service_file} /etc/systemd/system/${service_file}"
+    if [[ $status_result =~ ".*Loaded: not-found.*" ]]; then
+        cp etc/$service_file /etc/systemd/system/$service_file
+    fi
+}
+
+if [[ $UID == 0 || $EUID == 0 ]]; then
 
     if ! [[ -d "/etc/systemd/system/timer-hourly.target.wants" ]]; then
         mkdir /etc/systemd/system/timer-hourly.target.wants
@@ -51,10 +65,9 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     ask-for-replace "timer-yearly.timer" /etc/systemd/system/timer-yearly.timer
     ask-for-replace "timer-yearly.target" /etc/systemd/system/timer-yearly.target
 
-    # if emacs does not exist as a systemd service
-    if [[ `systemctl status google-calendar-to-org` =~ ".*Loaded: not-found.*" ]]; then
-        cp etc/google-calendar-to-org.service /etc/systemd/system/google-calendar-to-org.service
-    fi
+    systemd-service-query-or-create "google-calendar-to-org"
+    systemd-service-query-or-create "org-sync"
+    systemd-service-query-or-create "emacs@lefteris"
 
     echo "Done!"
 else
