@@ -2,8 +2,9 @@
 
 ORGDIR=/home/lefteris/org
 
+# use keychain to reuse my ssh key
+eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 cd $ORGDIR
-
 git pull origin
 if [[ $? != 0 ]]; then
     echo "Failed pull changes from remote"
