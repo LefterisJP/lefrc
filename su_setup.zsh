@@ -69,6 +69,9 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     systemd-service-query-or-create "org-sync"
     systemd-service-query-or-create "emacs@lefteris"
 
+    # we are running things on the hourly timer for now, so make sure it's enabled
+    systemctl enable timer-hourly.timer
+
     echo "Done!"
 else
     echo "Please run this script with super user privileges"
