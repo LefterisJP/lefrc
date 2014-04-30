@@ -33,6 +33,15 @@ function systemd-service-query-or-create() {
     fi
 }
 
+function systemd-service-assert-enabled() {
+    arg = $1
+    status_result=$(systemctl status $arg)
+    if [[ $status_result =~ ".*disabled.*" ]]; then
+        systemctl enable $arg
+        systemctl start $arg
+    fi
+}
+
 if [[ $UID == 0 || $EUID == 0 ]]; then
 
     if ! [[ -d "/etc/systemd/system/timer-hourly.target.wants" ]]; then
@@ -69,8 +78,8 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     systemd-service-query-or-create "org-sync"
     systemd-service-query-or-create "emacs@lefteris"
 
-    # we are running things on the hourly timer for now, so make sure it's enabled
-    systemctl enable timer-hourly.timer
+    # the above services run on the hourly timer so make sure it runs
+    systemd-service-assert-enabled timer-hourly.timer
 
     echo "Done!"
 else
