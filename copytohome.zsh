@@ -8,6 +8,7 @@ cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
 cp .Xresources ~
+cp .tmux.conf ~
 cp keyboard_config.xkb ~/.Xkeymap
 
 #copy work only stuff
