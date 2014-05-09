@@ -1,6 +1,7 @@
 ! xterm ----------------------------------------------------------------------
 xterm*background: black
 xterm*foreground: white
+xterm*metaSendsEscape: true
 xterm*VT100.geometry:     80x25
 !xterm*faceName:           Terminus:style=Regular:size=10
 xterm*faceName:            DejaVu Sans Mono for Powerline
