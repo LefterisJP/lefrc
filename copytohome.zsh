@@ -13,7 +13,9 @@ cp keyboard_config.xkb ~/.Xkeymap
 
 #copy work only stuff
 if [[ `hostname` == "archlenovo" ]]; then
-    cp -r work_only/* ~
+    cp  work_only/create_ssh_tunnel.sh ~
+    cp  work_only/openconnect_script ~
+    cp  work_only/hgall ~/bin
     cp ssh_config ~/.ssh/config
 fi
 

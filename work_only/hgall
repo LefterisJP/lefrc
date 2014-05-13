@@ -1,0 +1,25 @@
+#!/bin/sh
+
+dir=$(pwd)
+commit=0
+
+if [ $1 = "merge_ci" ]; then
+    if [ $# -ne 2 ]; then
+        echo "A merge commit command needs 2 arguments"
+        exit 1
+    fi
+    commit=1
+fi
+
+for i in $(ls); do
+    if [ -d "$i" ]; then
+        cd "$i"
+        echo "============= $i ================="
+        if [ $commit -eq 1 ]; then
+            hg ci -m "merge $2"
+        else
+            hg $@
+        fi
+        cd "$dir"
+    fi
+done
