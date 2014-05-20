@@ -11,12 +11,22 @@ if [ $1 = "merge_ci" ]; then
     commit=1
 fi
 
+if [ $1 = "mass_ci" ]; then
+    if [ $# -ne 2 ]; then
+        echo "A mass commit command needs 2 arguments"
+        exit 1
+    fi
+    commit=2
+fi
+
 for i in $(ls); do
     if [ -d "$i" ]; then
         cd "$i"
         echo "============= $i ================="
         if [ $commit -eq 1 ]; then
             hg ci -m "merge $2"
+        elif [ $commit -eq 2 ]; then
+            hg ci -m "$2"
         else
             hg $@
         fi
