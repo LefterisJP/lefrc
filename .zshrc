@@ -83,8 +83,6 @@ fi
 # Configuration only for home dev (arch)
 ###
 if [[ `hostname` == "archdesktop" ]]; then
-   # temporarily and until powerline package gets released for python 3.4
-    export PYTHONPATH="/usr/lib/python3.3/site-packages/:$PYTHONPATH"
     . /usr/share/zsh/site-contrib/powerline.zsh
    # add android tools to the path
    export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
@@ -102,8 +100,5 @@ if [[ -n ${EMACS} ]]; then
     zstyle ':prezto:module:terminal' auto-title 'no'
 fi
 
-
 export ALTERNATE_EDITOR=""
-# normally speciying the socket should not be needed but I think that either
-# emacs --daemon or emacslient has a bug when starting emacs from systemd
-export EDITOR=ecw
+export EDITOR=ecn.zsh
