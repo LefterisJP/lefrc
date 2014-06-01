@@ -1,3 +1,4 @@
+#!/bin/zsh
 ###
 #generic configuration
 ###
@@ -18,6 +19,13 @@ fi
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Source my zsh functions
+if [ -f ~/.zsh_functions ]; then
+    source ~/.zsh_functions
+else
+    print "Could not find the zsh_functions file"
 fi
 
 # source my aliases
@@ -86,6 +94,13 @@ if [[ `hostname` == "archdesktop" ]]; then
     . /usr/share/zsh/site-contrib/powerline.zsh
    # add android tools to the path
    export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
+   # add rtags binaries to the path
+   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/submodules/rtags/bin:$PATH"
+   # make sure rtags daemon is running
+   query-or-start-process rdm
+   if [ $? -ne 0 ]; then
+       print "Rtags daemon not found"
+   fi
 fi
 
 ###

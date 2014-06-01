@@ -3,6 +3,7 @@
 # this script has to be run from the directory where I keep all the rc files
 cp .bashrc ~
 cp .zsh_aliases ~
+cp .zsh_functions ~
 cp .gitconfig ~
 cp .hgrc ~
 cp .ackrc ~

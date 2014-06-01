@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+# Checks that a process is running
+function process-is-running () {
+    pid=$(pidof $1)
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+
+    `kill -s 0 $pid`
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+}
+
+# Make sure that a given process (by name) is running
+# If it's not running, open it in the background
+# Args:
+# $1        Process name
+# $2        nohup - 1 / 0, decides if the process should be
+#           die when its parent terminal dies. 1 means it does not die.
+#           Default is 1
+#
+function query-or-start-process () {
+    process-is-running $1
+    if [ $? -eq 0 ]; then
+        return 0
+    fi
+    if [[ $# -lt 2 || $2 -eq 1 ]]; then
+        `nohup $1 > /dev/null 2>&1 &`
+    else
+        print "no nohup"
+        `$1 > /dev/null 2>&1 &`
+    fi
+
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+}
