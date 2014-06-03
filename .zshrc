@@ -83,8 +83,15 @@ fi
 # Configuration only for work laptop
 ###
 if [[ `hostname` == "archlenovo" && ! `cat /etc/issue` =~ ".*Debian GNU/Linux.*" ]]; then
-#add powerline.zsh for arch
-. /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+    #add powerline.zsh for arch
+    . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+   # add rtags binaries to the path
+   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/el-get/rtags/bin:$PATH"
+   # make sure rtags daemon is running
+   query-or-start-process rdm
+   if [ $? -ne 0 ]; then
+       print "Rtags daemon not found"
+   fi
 fi
 
 ###
@@ -95,7 +102,7 @@ if [[ `hostname` == "archdesktop" ]]; then
    # add android tools to the path
    export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
    # add rtags binaries to the path
-   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/submodules/rtags/bin:$PATH"
+   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/el-get/rtags/bin:$PATH"
    # make sure rtags daemon is running
    query-or-start-process rdm
    if [ $? -ne 0 ]; then
