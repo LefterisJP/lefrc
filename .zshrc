@@ -26,35 +26,41 @@ if [ -f ~/.zsh_functions ]; then
     source ~/.zsh_functions
 else
     print "Could not find the zsh_functions file"
+    return 1
 fi
 
 # source my aliases
 source ~/.zsh_aliases
 
-###
-# Configuration ONLY for the chroot env at the work laptop
-###
-if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" ]]; then
-#for ssh-keychain (for now only in the developmentB machine)
-/usr/bin/keychain $HOME/.ssh/id_rsa
-source $HOME/.keychain/`hostname`-sh
-#add ccache wrapper to the path
-export PATH="/usr/lib/ccache:$PATH"
-#since for devwork it's a manual powerline install we need to add the bin
-#of powerline to the path too
-export PATH="$HOME/.local/bin:$PATH"
-#add powerline.zsh for devwork
-. ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-# disabling zsh line editor for tramp connecting to this as remote
-# check here for more info: http://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
-[ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+# if we got keychain installed add our ssh key there
+if hash keychain 2>/dev/null; then
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 fi
 
-###
-# Configuration for both work laptop and its chroot
-###
-if [[ `hostname` == "archlenovo" ]]; then
-  if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" || 
+#########################################
+# System-dependent configuration - START
+#########################################
+determine-location
+__location_id=$?
+
+if [[ $__location_id -eq 3 ]]; then # work chroot
+    #for ssh-keychain (for now only in the developmentB machine)
+    /usr/bin/keychain $HOME/.ssh/id_rsa
+    source $HOME/.keychain/`hostname`-sh
+    #add ccache wrapper to the path
+    export PATH="/usr/lib/ccache:$PATH"
+    #since for devwork it's a manual powerline install we need to add the bin
+    #of powerline to the path too
+    export PATH="$HOME/.local/bin:$PATH"
+    #add powerline.zsh for devwork
+    . ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+    # disabling zsh line editor for tramp connecting to this as remote
+    # check here for more info: http://www.gnu.org/software/emacs/manual/html_node/tramp/Frequently-Asked-Questions.html
+    [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
+fi
+
+if [[ $__location_id -gt 1 ]]; then # both work laptop and its chroot
+  if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" ||
               `nmcli conn status` =~ ".*Oracle lan.*" ||
               `nmcli conn status` =~ "clear" ]]; then
       export http_proxy=http://emea-proxy.uk.oracle.com:80
@@ -74,17 +80,8 @@ if [[ `hostname` == "archlenovo" ]]; then
   fi
 fi
 
-# if we got keychain installed add our ssh key there
-if hash keychain 2>/dev/null; then
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
-fi
-
-###
-# Configuration only for work laptop
-###
-if [[ `hostname` == "archlenovo" && ! `cat /etc/issue` =~ ".*Debian GNU/Linux.*" ]]; then
-    #add powerline.zsh for arch
-    . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+# Configuration for both home dev and work laptop
+if [[ $__location_id -eq 1 || $__location_id -eq 2 ]]; then
    # add rtags binaries to the path
    export PATH="${ZDOTDIR:-$HOME}/.emacs.d/el-get/rtags/bin:$PATH"
    # make sure rtags daemon is running
@@ -92,23 +89,19 @@ if [[ `hostname` == "archlenovo" && ! `cat /etc/issue` =~ ".*Debian GNU/Linux.*"
    if [ $? -ne 0 ]; then
        print "Rtags daemon not found"
    fi
-fi
 
-###
-# Configuration only for home dev (arch)
-###
-if [[ `hostname` == "archdesktop" ]]; then
-    . /usr/share/zsh/site-contrib/powerline.zsh
-   # add android tools to the path
-   export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
-   # add rtags binaries to the path
-   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/el-get/rtags/bin:$PATH"
-   # make sure rtags daemon is running
-   query-or-start-process rdm
-   if [ $? -ne 0 ]; then
-       print "Rtags daemon not found"
+   if [[ $__location_id -eq 1 ]]; then # Configuration only for home dev (arch)
+       . /usr/share/zsh/site-contrib/powerline.zsh
+       # add android tools to the path
+       export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
+   else # Configuration only for work laptop
+       #add powerline.zsh for arch
+       . /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
    fi
 fi
+#########################################
+# System-dependent configuration - END
+#########################################
 
 ###
 # Issue : commands being echoed back after each typing. As I explain in

@@ -37,3 +37,31 @@ function query-or-start-process () {
         return 1
     fi
 }
+
+# Determines my location by checking the environment
+# Returns:
+# 1 - Home development
+# 2 - Work development
+# 3 - Work chroot
+#
+# 0 - error
+function determine-location() {
+    local __hostname=$(hostname)
+    # local __etc_issue=$(cat /etc/issue)
+    # have funny error with local:
+    # determine-location:local:2: not valid in this context: \r
+    __etc_issue=$(cat /etc/issue)
+
+
+
+    if [[ $__hostname == "archdesktop" ]]; then
+        return 1
+    elif [[ $__hostname == "archlenovo" ]]; then
+        if [[ $__etc_issue =~ ".*Debian GNU/Linux.*" ]]; then
+            return 3
+        fi
+        return 2
+    fi
+
+    return 0
+}
