@@ -13,10 +13,5 @@ WorkingDirectory=%h
 # cloning and building all packages can take time
 TimeoutStartSec=0
 
-# Setup some environment variables for emacs and all
-# its subprocesses.
-Environment="MAKEFLAGS=-j4"
-
-
 [Install]
 WantedBy=multi-user.target

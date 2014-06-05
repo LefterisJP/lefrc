@@ -74,10 +74,6 @@ if [[ $__location_id -eq 1 || $__location_id -eq 2 ]]; then
        print "Rtags daemon not found"
    fi
 
-   # Make can run with many jobs in both these machines.
-   # If for some reason some project fails, I can take care of it
-   export MAKEFLAGS="-j4"
-
    if [[ $__location_id -eq 1 ]]; then # Configuration only for home dev (arch)
        . /usr/share/zsh/site-contrib/powerline.zsh
        # add android tools to the path
