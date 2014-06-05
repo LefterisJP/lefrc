@@ -34,7 +34,7 @@ function systemd-service-query-or-create() {
 }
 
 function systemd-service-assert-enabled() {
-    arg = $1
+    arg=$1
     status_result=$(systemctl status $arg)
     if [[ $status_result =~ ".*disabled.*" ]]; then
         systemctl enable $arg
@@ -73,6 +73,10 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     ask-for-replace "timer-monthly.target" /etc/systemd/system/timer-monthly.target
     ask-for-replace "timer-yearly.timer" /etc/systemd/system/timer-yearly.timer
     ask-for-replace "timer-yearly.target" /etc/systemd/system/timer-yearly.target
+
+    ask-for-replace "emacs@.service" /etc/systemd/system/emacs@.service
+    ask-for-replace "google-calendar-to-org.service" /etc/systemd/system/google-calendar-to-org.service
+    ask-for-replace "org-sync.service" /etc/systemd/system/org-sync.service
 
     systemd-service-query-or-create "google-calendar-to-org"
     systemd-service-query-or-create "org-sync"
