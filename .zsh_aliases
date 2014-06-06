@@ -15,3 +15,6 @@ alias ecn='emacsclient -n -c --socket-name /tmp/emacs1000/server'
 # gui emacs client existing frame
 alias ecx='emacsclient -n --socket-name /tmp/emacs1000/server'
 
+# recursively delete emacs autosave files under current dir
+alias rmeauto='find ./ -type f -name "#*#" -exec rm {} \;'
+
