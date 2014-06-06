@@ -19,6 +19,14 @@ if [ $1 = "mass_ci" ]; then
     commit=2
 fi
 
+if [ $1 = "close_branch" ]; then
+    if [ $# -ne 2 ]; then
+        echo "A close branch commit command needs 2 arguments"
+        exit 1
+    fi
+    commit=3
+fi
+
 for i in $(ls); do
     if [ -d "$i" ]; then
         cd "$i"
@@ -27,6 +35,13 @@ for i in $(ls); do
             hg ci -m "merge $2"
         elif [ $commit -eq 2 ]; then
             hg ci -m "$2"
+        elif [ $commit -eq 3 ]; then
+            branch=$(hg branch)
+            if [ $branch = $2 ]; then
+                hg ci -m "close branch $2" --close-branch
+            else
+                echo "Error: Found different branch: $branch"
+            fi
         else
             hg $@
         fi
