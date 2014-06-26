@@ -37,7 +37,7 @@ if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
 cp -r .config/powerline "$HOME/.config/"
-cp -r .config/systemd "$HOME/.systemd/"
+cp -r .config/systemd "$HOME/.config/"
 
 
 if [ ! -d "$HOME/.i3" ]; then

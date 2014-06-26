@@ -103,9 +103,7 @@ function systemd-service-assert-enabled() {
     arg=$1
 
     status_result=$(systemctl $2 status $arg)
-    echo $status_result
     if [[ $status_result =~ ".*disabled.*" ]]; then
-        echo "got in the if"
         systemctl $2 enable $arg
         systemctl $2 start $arg
     fi
