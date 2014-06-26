@@ -1,5 +1,5 @@
 [Unit]
-Description=Runs the script that synchronizes my org files with my personal server using git
+Description=Runs the script that synchronizes my org files with my personal server using git every hour
 Wants=timer-hourly.timer
 
 [Service]

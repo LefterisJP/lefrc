@@ -4,6 +4,7 @@
 cp .bashrc ~
 cp .zsh_aliases ~
 cp .zsh_functions ~
+cp .systemd_user.zsh ~
 cp .gitconfig ~
 cp .hgrc ~
 cp .ackrc ~
@@ -36,6 +37,7 @@ if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
 cp -r .config/powerline "$HOME/.config/"
+cp -r .config/systemd "$HOME/.systemd/"
 
 
 if [ ! -d "$HOME/.i3" ]; then

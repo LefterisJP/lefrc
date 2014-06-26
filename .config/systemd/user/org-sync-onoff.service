@@ -1,0 +1,15 @@
+[Unit]
+Description=Runs the script that synchronizes my org files with my personal server using git on boot and shutdown
+
+# In shutdown this makes sure that it runs before graphical.target does down so ssh-agent is still runnign
+# TODO: Make some kind of sshagent target so that it runs after it
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/lefteris/.local/bin/org_sync.zsh
+ExecStop=/home/lefteris/.local/bin/org_sync.zsh
+RemainAfterExit=true
+
+[Install]
+WantedBy=default.target

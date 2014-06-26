@@ -66,13 +66,7 @@ fi
 
 # Configuration for both home dev and work laptop
 if [[ $__location_id -eq 1 || $__location_id -eq 2 ]]; then
-   # add rtags binaries to the path
-   export PATH="${ZDOTDIR:-$HOME}/.emacs.d/el-get/rtags/bin:$PATH"
-   # make sure rtags daemon is running
-   query-or-start-process rdm
-   if [ $? -ne 0 ]; then
-       print "Rtags daemon not found"
-   fi
+   source ~/.systemd_user.zsh
 
    if [[ $__location_id -eq 1 ]]; then # Configuration only for home dev (arch)
        . /usr/share/zsh/site-contrib/powerline.zsh
@@ -84,7 +78,7 @@ if [[ $__location_id -eq 1 || $__location_id -eq 2 ]]; then
    fi
 fi
 
-if [[ $__location_id -eq 3 ]]; then # work chroot
+if [[ $__location_id -eq 3 ]]; then # work chroot only
     #for ssh-keychain (for now only in the developmentB machine)
     /usr/bin/keychain $HOME/.ssh/id_rsa
     source $HOME/.keychain/`hostname`-sh

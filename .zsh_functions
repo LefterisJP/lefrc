@@ -65,3 +65,54 @@ function determine-location() {
 
     return 0
 }
+
+
+# ask the user (me) if I want to replace something
+function ask-for-replace () {
+    while true; do
+    yn="" # maybe stupid? So that vared does not echo back last value
+    vared -cp "Do you wish to replace $1?" yn
+    echo "\n"
+    case $yn in
+        [Yy]* ) cp etc/$1 $2; break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.\n";;
+    esac
+    done
+}
+
+function systemd-service-query-or-create() {
+    arg=$1
+
+    # emacs is a special service so the service name is different
+    if [[ $arg == emacs@lefteris ]]; then
+        service_file=${arg%lefteris}
+        service_file=${service_file}.service
+    else
+        service_file=${arg}.service
+    fi
+
+    status_result=$(systemctl status $arg)
+
+    if [[ $status_result =~ ".*Loaded: not-found.*" ]]; then
+        cp etc/$service_file /etc/systemd/system/$service_file
+    fi
+}
+
+function systemd-service-assert-enabled() {
+    arg=$1
+
+    status_result=$(systemctl $2 status $arg)
+    echo $status_result
+    if [[ $status_result =~ ".*disabled.*" ]]; then
+        echo "got in the if"
+        systemctl $2 enable $arg
+        systemctl $2 start $arg
+    fi
+}
+
+function assert-dir-exists() {
+    if ! [[ -d "$1" ]]; then
+        mkdir -p $1
+    fi
+}

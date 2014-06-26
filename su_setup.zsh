@@ -1,65 +1,19 @@
 #!/bin/zsh
 
-# ask the user (me) if I want to replace something
-function ask-for-replace () {
-    while true; do
-    yn="" # maybe stupid? So that vared does not echo back last value
-    vared -cp "Do you wish to replace $1?" yn
-    echo "\n"
-    case $yn in
-        [Yy]* ) cp etc/$1 $2; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.\n";;
-    esac
-    done
-}
-
-function systemd-service-query-or-create() {
-    arg=$1
-    # emacs is a special service so the service name is different
-    if [[ $arg == emacs@lefteris ]]; then
-        service_file=${arg%lefteris}
-        service_file=${service_file}.service
-    else
-        service_file=${arg}.service
-    fi
-
-    status_result=$(systemctl status $arg)
-    # echo $query
-    # echo $status_result
-    # echo "cp etc/${service_file} /etc/systemd/system/${service_file}"
-    if [[ $status_result =~ ".*Loaded: not-found.*" ]]; then
-        cp etc/$service_file /etc/systemd/system/$service_file
-    fi
-}
-
-function systemd-service-assert-enabled() {
-    arg=$1
-    status_result=$(systemctl status $arg)
-    if [[ $status_result =~ ".*disabled.*" ]]; then
-        systemctl enable $arg
-        systemctl start $arg
-    fi
-}
+source /home/lefteris/.zsh_functions
 
 if [[ $UID == 0 || $EUID == 0 ]]; then
 
-    if ! [[ -d "/etc/systemd/system/timer-hourly.target.wants" ]]; then
-        mkdir /etc/systemd/system/timer-hourly.target.wants
-    fi
-    if ! [[ -d "/etc/systemd/system/timer-daily.target.wants" ]]; then
-        mkdir /etc/systemd/system/timer-daily.target.wants
-    fi
-    if ! [[ -d "/etc/systemd/system/timer-weekly.target.wants" ]]; then
-        mkdir /etc/systemd/system/timer-weekly.target.wants
-    fi
-    if ! [[ -d "/etc/systemd/system/timer-monthly.target.wants" ]]; then
-        mkdir /etc/systemd/system/timer-monthly.target.wants
-    fi
-    if ! [[ -d "/etc/systemd/system/timer-yearly.target.wants" ]]; then
-        mkdir /etc/systemd/system/timer-yearly.target.wants
-    fi
+    assert-dir-exists "/etc/systemd/system/timer-hourly.target.wants"
+    assert-dir-exists "/etc/systemd/system/timer-daily.target.wants"
+    assert-dir-exists "/etc/systemd/system/timer-weekly.target.wants"
+    assert-dir-exists "/etc/systemd/system/timer-monthly.target.wants"
+    assert-dir-exists "/etc/systemd/system/timer-yearly.target.wants"
 
+    assert-dir-exists "/etc/systemd/system/lefteris@.service.d"
+
+
+    ask-for-replace "lefteris_environment.conf" /etc/systemd/system/lefteris@.service.d/environment.conf
     ask-for-replace "slim.conf" /etc/slim.conf
     ask-for-replace "dmenu_run" /usr/bin/dmenu_run
 
