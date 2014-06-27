@@ -23,6 +23,10 @@ pager =
 #for hg shelve
 hgshelve = ~/.hgext/hgshelve/hgshelve.py
 xgraft = ~/.hgext/xgraft/xgraft.py
+mercurial_keyring = /usr/local/lib/python2.7/dist-packages/mercurial_keyring.py
+
+[schemes]
+p = https://tvphg01.uk.oracle.com/hg/
 
 #the pager extension allows for git log like logs
 [pager] 
@@ -32,6 +36,9 @@ attend = log graphlog diff #used by graph log
 [defaults]
 log = -f
 
+[auth]
+oracle_hg_1.prefix = https://tvphg01.uk.oracle.com/hg/
+oracle_hg_1.username = ekarapet
 
 [ui]
 merge = emacs
