@@ -84,14 +84,7 @@ function ask-for-replace () {
 function systemd-service-query-or-create() {
     arg=$1
 
-    # emacs is a special service so the service name is different
-    if [[ $arg == emacs@lefteris ]]; then
-        service_file=${arg%lefteris}
-        service_file=${service_file}.service
-    else
-        service_file=${arg}.service
-    fi
-
+    service_file=${arg}.service
     status_result=$(systemctl status $arg)
 
     if [[ $status_result =~ ".*Loaded: not-found.*" ]]; then
