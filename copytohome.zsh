@@ -11,6 +11,7 @@ cp .ackrc ~
 cp .xinitrc ~
 cp .Xresources ~
 cp .tmux.conf ~
+cp .offlineimaprc ~
 cp keyboard_config.xkb ~/.Xkeymap
 
 #copy work only stuff

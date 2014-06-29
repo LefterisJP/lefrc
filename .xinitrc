@@ -24,6 +24,13 @@ test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 # if Xresources is there load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+# Start GNOME Keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+# You probably need to do this too:
+export GPG_AGENT_INFO SSH_AUTH_SOCK
+
+
 # used to have a log file. Removed it since it took too much space
 # https://wiki.archlinux.org/index.php/i3
 exec i3

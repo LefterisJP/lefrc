@@ -37,6 +37,10 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     # the above services run on the hourly timer so make sure it runs
     systemd-service-assert-enabled timer-hourly.timer
 
+    ask-for-replace "dbus.socket" /etc/systemd/user/dbus.socket
+    ask-for-replace "dbus.service" /etc/systemd/user/dbus.service
+    systemctl --global enable dbus.socket
+
     echo "Done!"
 else
     echo "Please run this script with super user privileges"
