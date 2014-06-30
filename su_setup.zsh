@@ -16,6 +16,8 @@ if [[ $UID == 0 || $EUID == 0 ]]; then
     ask-for-replace "lefteris_environment.conf" /etc/systemd/system/lefteris@.service.d/environment.conf
     ask-for-replace "slim.conf" /etc/slim.conf
     ask-for-replace "dmenu_run" /usr/bin/dmenu_run
+    ask-for-replace "pam.d_login" /etc/pam.d/login
+    ask-for-replace "pam.d_passwd" /etc/pam.d/passwd
 
     ask-for-replace "timer-hourly.timer" /etc/systemd/system/timer-hourly.timer
     ask-for-replace "timer-hourly.target" /etc/systemd/system/timer-hourly.target

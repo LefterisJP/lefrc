@@ -24,13 +24,40 @@ test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 # if Xresources is there load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
-export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
-# Start GNOME Keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-# You probably need to do this too:
-export GPG_AGENT_INFO SSH_AUTH_SOCK
+#--------------------------
+# Start the window manager
+#--------------------------
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+        for f in /etc/X11/xinit/xinitrc.d/*; do
+                [ -x "$f" ] && . "$f"
+        done
+        unset f
+fi
+# i3 is the default window manager
+session=${1:-i3}
 
-
-# used to have a log file. Removed it since it took too much space
-# https://wiki.archlinux.org/index.php/i3
-exec i3
+case $session in
+    awesome           ) exec awesome;;
+    bspwm             ) exec bspwm;;
+    catwm             ) exec catwm;;
+    cinnamon          ) exec cinnamon-session;;
+    dwm               ) exec dwm;;
+    enlightenment     ) exec enlightenment_start;;
+    ede               ) exec startede;;
+    fluxbox           ) exec startfluxbox;;
+    gnome             ) exec gnome-session;;
+    gnome-classic     ) exec gnome-session --session=gnome-classic;;
+    i3|i3wm           ) exec i3;;
+    icewm             ) exec icewm-session;;
+    jwm               ) exec jwm;;
+    kde               ) exec startkde;;
+    mate              ) exec mate-session;;
+    monster|monsterwm ) exec monsterwm;;
+    notion            ) exec notion;;
+    openbox           ) exec openbox-session;;
+    unity             ) exec unity;;
+    xfce|xfce4        ) exec startxfce4;;
+    xmonad            ) exec xmonad;;
+    # No known session, try to run it as command
+    *) exec $1;;
+esac
