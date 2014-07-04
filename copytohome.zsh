@@ -33,6 +33,12 @@ cp -r ./prezto/* "$HOME/.zprezto"
 zsh ./prezto_new_conf.zsh
 cp .zshrc ~
 
+# copy gpg config
+if [ ! -d "$HOME/.gnupg" ]; then
+    mkdir "$HOME/.gnupg"
+fi
+cp gpg-agent.conf "$HOME/.gnupg/"
+
 # copy local user configurations
 if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
