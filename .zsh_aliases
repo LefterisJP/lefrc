@@ -5,6 +5,7 @@
 alias ls='ls --color'
 alias gdbbt="gdb -q -n -ex 'thread apply all bt' -batch"
 
+# --- Emacs aliases
 
 # normally speciying the socket should not be needed but I think that either
 # emacs --daemon or emacslient has a bug when starting emacs from systemd
@@ -18,3 +19,6 @@ alias ecx='emacsclient -n --socket-name /tmp/emacs1000/server'
 # recursively delete emacs autosave files under current dir
 alias rmeauto='find ./ -type f -name "#*#" -exec rm {} \;'
 
+# --- Systemctl aliases
+alias sctl='systemctl'
+alias sctlu='systemctl --user'
