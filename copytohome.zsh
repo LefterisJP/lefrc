@@ -38,6 +38,7 @@ if [ ! -d "$HOME/.gnupg" ]; then
     mkdir "$HOME/.gnupg"
 fi
 cp gpg-agent.conf "$HOME/.gnupg/"
+cp gpg.conf "$HOME/.gnupg/"
 
 # copy local user configurations
 if [ ! -d "$HOME/.config" ]; then

@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # remove the previous symlinks if existing
 rm -f "${ZDOTDIR:-$HOME}"/.zlogin
 rm -f "${ZDOTDIR:-$HOME}"/.zlogout
