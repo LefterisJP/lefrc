@@ -45,8 +45,8 @@ __location_id=$?
 
 if [[ $__location_id -gt 1 ]]; then # both work laptop and its chroot
   if [[ `cat /etc/issue` =~ ".*Debian GNU/Linux.*" ||
-              `nmcli conn status` =~ ".*Oracle lan.*" ||
-              `nmcli conn status` =~ "clear" ]]; then
+              `nmcli conn show --active` =~ ".*Oracle lan.*" ||
+              `nmcli conn show --active` =~ "clear" ]]; then
       export http_proxy=http://emea-proxy.uk.oracle.com:80
       export https_proxy=http://emea-proxy.uk.oracle.com:80
       export ftp_proxy=$http_proxy
