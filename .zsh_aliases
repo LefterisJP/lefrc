@@ -22,3 +22,6 @@ alias rmeauto='find ./ -type f -name "#*#" -exec rm {} \;'
 # --- Systemctl aliases
 alias sctl='systemctl'
 alias sctlu='systemctl --user'
+
+# --- git aliases
+alias gitlateci='my-git-late-ci'

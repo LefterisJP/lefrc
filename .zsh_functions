@@ -107,3 +107,15 @@ function assert-dir-exists() {
         mkdir -p $1
     fi
 }
+
+function my-git-late-ci() {
+    if ! [[ $# -gt 0 ]]; then
+        echo "gite-late-ci: Not enough arguments provided."
+        return
+    fi
+    
+    newdate=$(date -d "now + $1 hour")
+    commit_result=$(env GIT_AUTHOR_DATE=${newdate} GIT_COMMITTER_DATE=${newdate} git commit "${@:2}")
+
+    return $?
+}
