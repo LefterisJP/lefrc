@@ -110,11 +110,37 @@ function assert-dir-exists() {
 
 function my-git-late-ci() {
     if ! [[ $# -gt 0 ]]; then
-        echo "gite-late-ci: Not enough arguments provided."
+        echo "git-late-ci: Not enough arguments provided."
         return
     fi
-    
-    newdate=$(date -d "now + $1 hour")
+
+    local hours=0
+    local mins=0
+    local index=0
+
+    # find hours/mins arguments
+    for arg in "$@"
+    do
+        if [[ $arg = "-m" ]]; then
+            if ! [[ $# -gt ((index + 1)) ]]; then
+                echo "git-late-ci: Numeric minutes argument should follow -m"
+                return
+            fi
+
+            mins="$argv[((index+2))]"
+        elif [[ $arg = "-h" ]]; then
+            if ! [[ $# -gt ((index + 1)) ]]; then
+                echo "git-late-ci: Numeric hours argument should follow -h"
+                return
+            fi
+
+            hours="$argv[((index+2))]"
+        fi
+
+        ((index += 1))
+    done
+
+    newdate=$(date -d "now + $hours hour $mins minutes")
     commit_result=$(env GIT_AUTHOR_DATE=${newdate} GIT_COMMITTER_DATE=${newdate} git commit "${@:2}")
 
     return $?
