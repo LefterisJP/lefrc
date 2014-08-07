@@ -117,17 +117,19 @@ function my-git-late-ci() {
     local hours=0
     local mins=0
     local index=0
+    local start_of_git=0
 
     # find hours/mins arguments
     for arg in "$@"
     do
-        if [[ $arg = "-m" ]]; then
+        if [[ $arg = "-z" ]]; then
             if ! [[ $# -gt ((index + 1)) ]]; then
-                echo "git-late-ci: Numeric minutes argument should follow -m"
+                echo "git-late-ci: Numeric minutes argument should follow k-z"
                 return
             fi
 
             mins="$argv[((index+2))]"
+            start_of_git=$((index+3))
         elif [[ $arg = "-h" ]]; then
             if ! [[ $# -gt ((index + 1)) ]]; then
                 echo "git-late-ci: Numeric hours argument should follow -h"
@@ -135,13 +137,14 @@ function my-git-late-ci() {
             fi
 
             hours="$argv[((index+2))]"
+            start_of_git=$((index+3))
         fi
 
         ((index += 1))
     done
 
     newdate=$(date -d "now + $hours hour $mins minutes")
-    commit_result=$(env GIT_AUTHOR_DATE=${newdate} GIT_COMMITTER_DATE=${newdate} git commit "${@:2}")
+    commit_result=$(env GIT_AUTHOR_DATE=${newdate} GIT_COMMITTER_DATE=${newdate} git commit "${@:$start_of_git}")
 
     return $?
 }
