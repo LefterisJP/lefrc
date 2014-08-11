@@ -148,3 +148,8 @@ function my-git-late-ci() {
 
     return $?
 }
+
+
+function my-docker() {
+    $(docker run --rm -i -t docker-registry.service.consul-ber.de.oracle.com/debian_pld_base:default /sbin/my_init -- bash -l)
+}
