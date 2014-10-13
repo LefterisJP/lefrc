@@ -25,3 +25,4 @@ alias sctlu='systemctl --user'
 
 # --- git aliases
 alias gitlateci='my-git-late-ci'
+alias gitamendlasttonow='GIT_COMMITTER_DATE="`date`" git commit --amend --date "`date`"'
