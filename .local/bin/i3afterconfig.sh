@@ -6,4 +6,4 @@ if [ $HOSTNAME == "archlenovo" ]; then
 fi
 
 # invoke feh to load the desktop background
-feh --bg-scale ~/desktop_background.png
+feh --bg-scale ~/desktop_background.jpg

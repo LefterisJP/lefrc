@@ -44,7 +44,9 @@ cp gpg.conf "$HOME/.gnupg/"
 if [ ! -d "$HOME/.config" ]; then
     mkdir "$HOME/.config"
 fi
-cp -r .config/powerline "$HOME/.config/"
+
+# In newer version of powerline you must not copy this config
+# cp -r .config/powerline "$HOME/.config/"
 cp -r .config/systemd "$HOME/.config/"
 
 
