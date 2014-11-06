@@ -13,6 +13,7 @@ cp .Xresources ~
 cp .tmux.conf ~
 cp .offlineimaprc ~
 cp keyboard_config.xkb ~/.Xkeymap
+cp ssh_config ~/.ssh/config
 
 #copy work only stuff
 if [[ `hostname` == "archlenovo" ]]; then
@@ -21,7 +22,7 @@ if [[ `hostname` == "archlenovo" ]]; then
     cp  work_only/my_debootstrap.sh ~
     cp  work_only/heavyload.zsh ~/bin
     cp  work_only/hgall ~/bin
-    cp ssh_config ~/.ssh/config
+
 fi
 
 # Prepare Prezto and ZSH

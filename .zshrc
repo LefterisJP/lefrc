@@ -29,6 +29,10 @@ else
     return 1
 fi
 
+# enable zsh history (?)
+SAVEHIST=100
+HISTFILE=~/.zhistory
+
 # source my aliases
 source ~/.zsh_aliases
 

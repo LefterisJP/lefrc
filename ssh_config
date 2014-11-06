@@ -2,10 +2,5 @@ Host lefvps
    Hostname 84.22.97.122
    Port 1986
    User lefteris
-   ProxyCommand nc -X connect -x emea-proxy.uk.oracle.com:80 %h %p
-#   ProxyCommand nc -X 5 -x localhost:7652 %h %p
+   IdentityFile ~/.ssh/id_rsa_lef_nov14
 
-
-Host *.github.com *.sourceforge.net *.
-     # Forces all ssh to go via an https proxy at emea oracle
-     ProxyCommand nc -X connect -x emea-proxy.uk.oracle.com:80 %h %p
