@@ -29,8 +29,12 @@ else
     return 1
 fi
 
-# enable zsh history
-SAVEHIST=100
+# - enable zsh history -
+
+# maximum number of lines that are kept in a session
+HISTSIZE=1000
+# maximum number of lines that are kept in the history file
+SAVEHIST=1000
 HISTFILE=~/.zhistory
 
 # source my aliases
