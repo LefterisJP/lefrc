@@ -19,4 +19,5 @@ xterm*rightScrollBar:      true
 xterm*jumpScroll:          true
 xterm*multiScroll:         true
 xterm*toolBar:             false
-
+! Xterm now works both with the 'Primary' and the 'CLIPBOARD'
+XTerm*VT100.translations: #override <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0)
