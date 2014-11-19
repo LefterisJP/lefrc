@@ -29,6 +29,9 @@ else
     return 1
 fi
 
+# - set ethereum tests path -
+export ETHEREUM_TEST_PATH=/home/lefteris/ew/tests/
+
 # - enable zsh history -
 
 # maximum number of lines that are kept in a session
