@@ -45,7 +45,7 @@ source ~/.zsh_aliases
 
 # if we got keychain installed add our ssh key there
 if hash keychain 2>/dev/null; then
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa_lef_nov14)
 fi
 
 #########################################
