@@ -11,6 +11,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
   export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
 fi
 
+#add ccache to the path if we have it
+if [[ -s "/usr/lib/ccache" ]]; then
+  export PATH="/usr/lib/ccache/:$PATH"
+fi
+
 #add home/lefteris/bin to the path
 if [[ -s "${ZDOTDIR:-$HOME}/bin" ]]; then
   export PATH="${ZDOTDIR:-$HOME}/bin:$PATH"
