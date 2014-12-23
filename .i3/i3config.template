@@ -169,3 +169,6 @@ bar {
     font pango:DejaVu Sans Mono 9  
     status_command ~/.local/bin/conky-i3-bar.sh
 }
+
+# At beginning of i3 start xkeybindings
+execalways xbindkeys -f /home/lefteris/.xbindkeysrc

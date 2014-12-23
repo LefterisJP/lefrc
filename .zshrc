@@ -34,6 +34,11 @@ else
     return 1
 fi
 
+# quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
+# be to alter the location in prezto where it is set
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS
+
 # - set ethereum tests path -
 export ETHEREUM_TEST_PATH=/home/lefteris/ew/tests/
 

@@ -4,6 +4,10 @@
 
 # make sure udiskie is running, for usb auto detection
 udiskie &
+
+# start xbindkeys to setup my keybindinds
+xbindkeys
+
 # for the desktop set the resolution 
 if [ $HOSTNAME == "archdesktop" ]; then
     # also set the 120HZ resolution
