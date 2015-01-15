@@ -21,7 +21,7 @@
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   lg = !"git lg1"
   show-merged = "!for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format=\"%ci %cr %an\" $branch | head -n 1` \\t$branch; done | sort -r "
-  del-merged-remote = "!git branch -r --merged | grep  -v 'origin/master\\|origin/develop' | grep origin/ | sed 's/origin\\//:/' | xargs -n 1 git push origin "
+  del-merged-remote = "!git remote update origin --prune > /dev/null && git branch -r --merged | grep  -v 'origin/master\\|origin/develop' | grep origin/ | sed 's/origin\\///' | xargs -n 1 git push --delete origin"
   del-merged-local = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
 
 [color]
