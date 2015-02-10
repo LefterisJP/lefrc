@@ -10,6 +10,7 @@ cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
 cp .Xresources ~
+cp .Xmodmap ~
 cp .tmux.conf ~
 cp .offlineimaprc ~
 cp keyboard_config.xkb ~/.Xkeymap
