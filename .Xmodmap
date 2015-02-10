@@ -1,4 +1,4 @@
-# Make Caps lock Left Hyper Key
+! Make Caps lock Left Hyper Key
 clear      lock 
 clear      mod1
 clear      mod2

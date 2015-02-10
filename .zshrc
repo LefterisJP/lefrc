@@ -34,6 +34,11 @@ else
     return 1
 fi
 
+# If there is an .Xmodmap load it
+if [ -f ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
+else
+
 # quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
 # be to alter the location in prezto where it is set
 alias grep="/usr/bin/grep $GREP_OPTIONS"
@@ -62,6 +67,8 @@ fi
 source ~/.systemd_user.zsh
 # use powerline
 . /usr/share/zsh/site-contrib/powerline.zsh
+
+
 #########################################
 # System-dependent configuration - START
 #########################################
