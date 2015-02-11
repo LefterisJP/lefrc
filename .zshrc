@@ -34,11 +34,6 @@ else
     return 1
 fi
 
-# If there is an .Xmodmap load it
-if [ -f ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
-fi
-
 # quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
 # be to alter the location in prezto where it is set
 alias grep="/usr/bin/grep $GREP_OPTIONS"
@@ -143,3 +138,8 @@ unfunction zkbd_file; unset keyfile ret
 # make ALT + arrows keys move in words. The key sequence is a bit fucked up but work for my setup
 bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
+
+# If there is an .Xmodmap load it -- keep at end of .zshrc
+if [ -f ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
+fi
