@@ -37,7 +37,7 @@ fi
 # If there is an .Xmodmap load it
 if [ -f ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
-else
+fi
 
 # quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
 # be to alter the location in prezto where it is set
