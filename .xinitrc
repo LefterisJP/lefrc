@@ -1,18 +1,17 @@
 #!/bin/bash
-# If you want to change it to zsh
-# remember to change slim.conf login_cmd
 
 # make sure udiskie is running, for usb auto detection
 udiskie &
 
-# start xbindkeys to setup my keybindinds
+# start xbindkeys to setup my keybindings
 xbindkeys
 
-# for the desktop set the resolution 
+# for the desktop set the refresh rate
 if [ $HOSTNAME == "archdesktop" ]; then
-    # also set the 120HZ resolution
+    # also set the 120HZ refresh rate
     xrandr --output DVI-I-1 --mode 0x281
 fi
+
 #for the laptop let's disable touchpad when typing
 if [ $HOSTNAME == "archlenovo" ]; then
     # more info here: https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
@@ -22,11 +21,13 @@ fi
 # activate custom xkeymap configuration
 test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 
-# generate i3 config from the templates
-~/.local/bin/gen-i3-config.sh
-
 # if Xresources is there load it
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# If there is an .Xmodmap load it
+if [ -f ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
+fi
 
 #--------------------------
 # Start the window manager

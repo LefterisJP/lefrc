@@ -9,6 +9,7 @@ cp .gitconfig ~
 cp .hgrc ~
 cp .ackrc ~
 cp .xinitrc ~
+cp .xprofile ~
 cp .Xresources ~
 cp .Xmodmap ~
 cp .tmux.conf ~

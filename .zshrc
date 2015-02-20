@@ -138,8 +138,3 @@ unfunction zkbd_file; unset keyfile ret
 # make ALT + arrows keys move in words. The key sequence is a bit fucked up but work for my setup
 bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
-
-# If there is an .Xmodmap load it -- keep at end of .zshrc
-if [ -f ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
-fi
