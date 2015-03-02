@@ -65,6 +65,16 @@ source ~/.systemd_user.zsh
 
 
 #########################################
+# silly stuff --                  START
+#########################################
+if [[ -s "/usr/bin/fortune" && -s "/usr/bin/ponysay" ]]; then
+   fortune -a | ponythink
+fi
+#########################################
+# silly stuff --                  END
+#########################################
+
+#########################################
 # System-dependent configuration - START
 #########################################
 determine-location
