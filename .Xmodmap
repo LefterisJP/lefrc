@@ -1,4 +1,4 @@
-! Make Caps lock Left Hyper Key
+! My key remappings
 clear      lock 
 clear      mod1
 clear      mod2
@@ -9,7 +9,7 @@ keycode    37   = Control_L
 keycode      66 = Hyper_L
 add     control = Control_L Control_R
 add        mod1 = Alt_L Alt_R Meta_L
-add        mod2 = Num_Lock
+add        mod2 = Insert
 add        mod3 = Hyper_L
 add        mod4 = Super_L Super_R
 add        mod5 = Mode_switch ISO_Level3_Shift
