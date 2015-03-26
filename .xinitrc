@@ -29,6 +29,9 @@ if [ -f ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
 
+# Configure xautolock to use our blurring script
+xautolock -time 10 -locker ~/.local/bin/my-i3-blur-lock&
+
 #--------------------------
 # Start the window manager
 #--------------------------
