@@ -26,6 +26,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# set GOPATH
+#add home/lefteris/bin to the path
+if [[ -d ~/w/go ]]; then
+    export GOPATH=/home/lefteris/w/go
+    export PATH=$GOPATH/bin:$PATH
+fi
+
 # Source my zsh functions
 if [ -f ~/.zsh_functions ]; then
     source ~/.zsh_functions
