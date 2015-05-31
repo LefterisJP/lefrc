@@ -92,7 +92,7 @@ if [[ $__location_id -eq 1 || $__location_id -eq 2 ]]; then
 
    if [[ $__location_id -eq 1 ]]; then # Configuration only for home dev (arch)
        # add android tools to the path
-       export PATH="${ZDOTDIR:-$HOME}/opt/android/tools:$PATH"
+       export PATH="/opt/android-sdk/tools:$PATH"
    else # Configuration only for work laptop
    fi
 fi
