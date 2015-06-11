@@ -146,7 +146,8 @@ unfunction zkbd_file; unset keyfile ret
 # setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
+# make sure that insert does not enable overwrite mode. We use insert as the i3-wm key
+[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  my-noop()
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
 [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history

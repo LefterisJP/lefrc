@@ -149,6 +149,7 @@ function my-git-late-ci() {
     return $?
 }
 
+function my-noop() {}
 
 function my-docker-start() {
 docker run -v /home/lefteris/pw/dpdk_p2:/home/oracle/dpdk_p2 --rm -i -t docker-registry.service.consul-ber.de.oracle.com/oracle_linux_pld_base:7.0 /sbin/my_init -- sudo -u oracle -i
