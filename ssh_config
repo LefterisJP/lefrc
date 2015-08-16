@@ -1,6 +1,15 @@
-Host lefvps
-   Hostname 84.22.97.122
+Host wojpetvps_others
+   Hostname 188.241.115.68
    Port 1986
-   User lefteris
-   IdentityFile ~/.ssh/id_rsa_lef_nov14
+   User wrubel
+
+Host wojpetvps
+   Hostname 188.241.115.68
+   Port 1986
+   User git
+
+Host refu
+   Hostname refu.co
+   Port 47926
+   User realinte
 
