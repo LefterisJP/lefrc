@@ -62,7 +62,7 @@ source ~/.zsh_aliases
 
 # if we got keychain installed add our ssh key there
 if hash keychain 2>/dev/null; then
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa_lef_nov14)
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 fi
 
 # user systemd services
@@ -142,12 +142,12 @@ else
     printf 'Failed to setup keys using zkbd.\n'
 fi
 unfunction zkbd_file; unset keyfile ret
-
+echo "We get here!!"
 # setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 # make sure that insert does not enable overwrite mode. We use insert as the i3-wm key
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  my-noop()
+bindkey  "${key[Insert]}"  emacs-backward-word
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
 [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
