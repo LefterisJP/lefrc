@@ -6,31 +6,9 @@
 #make sure we got 256 color term
 export TERM=xterm-256color
 
-#add ./local/bin to the path
-if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
-  export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
-fi
-
-#add ccache to the path if we have it
-if [[ -s "/usr/lib/ccache" ]]; then
-  export PATH="/usr/lib/ccache/:$PATH"
-fi
-
-#add home/lefteris/bin to the path
-if [[ -s "${ZDOTDIR:-$HOME}/bin" ]]; then
-  export PATH="${ZDOTDIR:-$HOME}/bin:$PATH"
-fi
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# set GOPATH
-#add home/lefteris/bin to the path
-if [[ -d ~/w/go ]]; then
-    export GOPATH=/home/lefteris/w/go
-    export PATH=$GOPATH/bin:$PATH
 fi
 
 # Source my zsh functions
@@ -62,7 +40,7 @@ source ~/.zsh_aliases
 
 # if we got keychain installed add our ssh key there
 if hash keychain 2>/dev/null; then
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa_lef_nov14)
 fi
 
 # user systemd services
@@ -142,12 +120,12 @@ else
     printf 'Failed to setup keys using zkbd.\n'
 fi
 unfunction zkbd_file; unset keyfile ret
-echo "We get here!!"
+
 # setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 # make sure that insert does not enable overwrite mode. We use insert as the i3-wm key
-bindkey  "${key[Insert]}"  emacs-backward-word
+[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  my-noop()
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
 [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
