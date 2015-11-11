@@ -19,6 +19,16 @@ else
     return 1
 fi
 
+#add ./local/bin to the path
+if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
+  export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
+fi
+
+#add ccache to the path if we have it
+if [[ -s "/usr/lib/ccache" ]]; then
+  export PATH="/usr/lib/ccache/:$PATH"
+fi
+
 # quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
 # be to alter the location in prezto where it is set
 alias grep="/usr/bin/grep $GREP_OPTIONS"
