@@ -32,6 +32,10 @@ fi
 # Configure xautolock to use our blurring script
 xautolock -time 10 -locker ~/.local/bin/my-i3-blur-lock&
 
+# Use AltGr to allow for writting Umlauts and other special chars. Yay German!
+# https://zuttobenkyou.wordpress.com/2011/08/24/xorg-using-the-us-international-altgr-intl-variant-keyboard-layout/
+setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+
 #--------------------------
 # Start the window manager
 #--------------------------
