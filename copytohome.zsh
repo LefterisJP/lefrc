@@ -16,6 +16,8 @@ cp .tmux.conf ~
 cp .offlineimaprc ~
 cp keyboard_config.xkb ~/.Xkeymap
 cp ssh_config ~/.ssh/config
+cp dunstrc /home/lefteris/.config/dunst/dunstrc
+
 
 #copy work only stuff
 if [[ `hostname` == "archlenovo" ]]; then
