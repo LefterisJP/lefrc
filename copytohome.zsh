@@ -11,6 +11,7 @@ cp .ackrc ~
 cp .xinitrc ~
 cp .xprofile ~
 cp .Xresources ~
+cp .xbindkeysrc ~
 cp .Xmodmap ~
 cp .tmux.conf ~
 cp .offlineimaprc ~

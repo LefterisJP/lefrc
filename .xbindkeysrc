@@ -1,0 +1,19 @@
+# Bind the calculator button of Lenovo t540p to toggling the touchpad on/off
+"~/.local/bin/trackpad-toggle.sh"
+    m:0x0 + c:148
+
+"pamixer --increase 10"
+    XF86AudioRaiseVolume
+
+"pamixer --decrease 10"
+    XF86AudioLowerVolume
+
+"light -A 5"
+    XF86MonBrightnessUp
+
+"light -U 5"
+    XF86MonBrightnessDown
+
+# Bind the lock button of lenovo t540p to lock the screen
+"~/.local/bin/my-i3-blur-lock"
+    m:0x40 + c:46
