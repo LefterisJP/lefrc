@@ -6,19 +6,6 @@
 #make sure we got 256 color term
 export TERM=xterm-256color
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# Source my zsh functions
-if [ -f ~/.zsh_functions ]; then
-    source ~/.zsh_functions
-else
-    print "Could not find the zsh_functions file"
-    return 1
-fi
-
 #add ./local/bin to the path
 if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
   export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
@@ -27,6 +14,31 @@ fi
 #add ccache to the path if we have it
 if [[ -s "/usr/lib/ccache" ]]; then
   export PATH="/usr/lib/ccache/:$PATH"
+fi
+
+#add home/lefteris/bin to the path
+if [[ -s "${ZDOTDIR:-$HOME}/bin" ]]; then
+  export PATH="${ZDOTDIR:-$HOME}/bin:$PATH"
+fi
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# set GOPATH
+#add home/lefteris/bin to the path
+if [[ -d ~/w/go ]]; then
+    export GOPATH=/home/lefteris/w/go
+    export PATH=$GOPATH/bin:$PATH
+fi
+
+# Source my zsh functions
+if [ -f ~/.zsh_functions ]; then
+    source ~/.zsh_functions
+else
+    print "Could not find the zsh_functions file"
+    return 1
 fi
 
 # quick/dirty fix for grep's GREP OPTIONS warning. Normal fix would
@@ -50,7 +62,7 @@ source ~/.zsh_aliases
 
 # if we got keychain installed add our ssh key there
 if hash keychain 2>/dev/null; then
-    eval $(keychain --eval --agents ssh -Q --quiet id_rsa_lef_nov14)
+    eval $(keychain --eval --agents ssh -Q --quiet id_rsa)
 fi
 
 # user systemd services
@@ -135,7 +147,7 @@ unfunction zkbd_file; unset keyfile ret
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 # make sure that insert does not enable overwrite mode. We use insert as the i3-wm key
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  my-noop()
+bindkey  "${key[Insert]}"  emacs-backward-word
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
 [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
