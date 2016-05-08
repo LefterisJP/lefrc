@@ -26,7 +26,9 @@ test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 
 # Use AltGr to allow for writting Umlauts and other special chars. Yay German!
 # https://zuttobenkyou.wordpress.com/2011/08/24/xorg-using-the-us-international-altgr-intl-variant-keyboard-layout/
-setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
+# Also set US and Greek keyboard layout and use Right Ctrl + Right Shift to switch between them
+setxkbmap -rules evdev -model evdev -layout us,el -variant altgr-intl -option grp:rctrl_rshift_toggle
+
 
 # If there is an .Xmodmap load it. Has to come after setxkbmap
 if [ -f ~/.Xmodmap ]; then
