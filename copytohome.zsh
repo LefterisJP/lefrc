@@ -18,7 +18,6 @@ cp .tmux.conf ~
 cp .offlineimaprc ~
 cp keyboard_config.xkb ~/.Xkeymap
 cp ssh_config ~/.ssh/config
-cp dunstrc /home/lefteris/.config/dunst/dunstrc
 
 # Prepare Prezto and ZSH
 if [ -d "$HOME/.zprezto" ]; then
@@ -44,6 +43,11 @@ fi
 # In newer version of powerline you must not copy this config
 # cp -r .config/powerline "$HOME/.config/"
 cp -r .config/systemd "$HOME/.config/"
+
+if [ ! -d "$HOME/.config/dunst" ]; then
+    mkdir "$HOME/.config/dunst"
+fi
+cp dunstrc /home/lefteris/.config/dunst/dunstrc
 
 
 if [ ! -d "$HOME/.i3" ]; then
