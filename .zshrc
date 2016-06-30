@@ -53,6 +53,8 @@ unset GREP_OPTIONS
 
 # - set ethereum tests path -
 export ETHEREUM_TEST_PATH=/home/lefteris/ew/tests/
+# - set Npm node path -
+export NODE_PATH=/usr/lib/node_modules
 
 # - enable zsh history -
 
