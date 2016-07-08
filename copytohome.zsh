@@ -12,7 +12,6 @@ cp .xinitrc ~
 cp .xprofile ~
 cp .Xresources ~
 cp .Xdefaults ~
-cp .xbindkeysrc ~
 cp .Xmodmap ~
 cp .tmux.conf ~
 cp .offlineimaprc ~
@@ -67,8 +66,10 @@ cp -r .local/bin/* ~/.local/bin/
 
 if [[ `hostname` == "archlenovo" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
+    cp .xbindkeysrc_laptop ~/.xbindkeysrc
 else
     cp ./.conkyrc_home ~/.conkyrc
+    cp .xbindkeysrc_home ~/.xbindkeysrc
 fi
 
 #after copying the files, generate the i3 config
