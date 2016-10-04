@@ -84,6 +84,15 @@ elif [[ -f /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
 
 
+# Python virtualenv wrapper
+if [[ -f /usr/bin/virtualenvwrapper.sh ]]; then
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+    VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+fi
+
+
+
 #########################################
 # silly stuff --                  START
 #########################################
