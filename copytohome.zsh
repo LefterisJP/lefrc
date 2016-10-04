@@ -64,7 +64,7 @@ cp -r .i3/* ~/.i3/
 # copy some utils
 cp -r .local/bin/* ~/.local/bin/
 
-if [[ `hostname` == "archlenovo" ]]; then
+if [[ `hostname` == "robaczek" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
     cp .xbindkeysrc_laptop ~/.xbindkeysrc
 else
