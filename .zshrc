@@ -6,36 +6,9 @@
 #make sure we got 256 color term
 export TERM=xterm-256color
 
-#add ./local/bin to the path
-if [[ -s "${ZDOTDIR:-$HOME}/.local/bin" ]]; then
-  export PATH="${ZDOTDIR:-$HOME}/.local/bin:$PATH"
-fi
-
-#4add /home/lefteris/.cargo/bin to the path
-if [[ -s "${ZDOTDIR:-$HOME}/.cargo/bin" ]]; then
-  export PATH="${ZDOTDIR:-$HOME}/.cargo/bin:$PATH"
-fi
-
-#add ccache to the path if we have it
-if [[ -s "/usr/lib/ccache" ]]; then
-  export PATH="/usr/lib/ccache/:$PATH"
-fi
-
-#add home/lefteris/bin to the path
-if [[ -s "${ZDOTDIR:-$HOME}/bin" ]]; then
-  export PATH="${ZDOTDIR:-$HOME}/bin:$PATH"
-fi
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# set GOPATH
-#add home/lefteris/bin to the path
-if [[ -d ~/w/go ]]; then
-    export GOPATH=/home/lefteris/w/go
-    export PATH=$GOPATH/bin:$PATH
 fi
 
 # Source my zsh functions
