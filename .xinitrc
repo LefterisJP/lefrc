@@ -39,22 +39,8 @@ fi
 xautolock -time 10 -locker ~/.local/bin/my-i3-blur-lock&
 
 # Set the PATH. Has to be set from here to be also visible in other window manager apps like dmenu
-if [[ -d "${HOME}/.local/bin" ]]; then
-    export PATH="${HOME}/.local/bin:$PATH"
-fi
-if [[ -d "${HOME}/.cargo/bin" ]]; then
-    export PATH="${HOME}/.cargo/bin:$PATH"
-fi
-if [[ -d "/usr/lib/ccache" ]]; then
-    export PATH="/usr/lib/ccache:$PATH"
-fi
-if [[ -d "${HOME}/bin" ]]; then
-    export PATH="${HOME}/bin:$PATH"
-fi
-if [[ -d "${HOME}/w/go" ]]; then
-    export GOPATH="${HOME}/w/go:$PATH"
-    export PATH=$GOPATH/bin:$PATH
-fi
+source ~/.lefpathsetter
+
 
 #--------------------------
 # Start the window manager

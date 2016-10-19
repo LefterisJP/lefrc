@@ -1,0 +1,18 @@
+#!bin/bash
+
+if [[ -d "${HOME}/.local/bin" ]]; then
+    export PATH="${HOME}/.local/bin:$PATH"
+fi
+if [[ -d "${HOME}/.cargo/bin" ]]; then
+    export PATH="${HOME}/.cargo/bin:$PATH"
+fi
+if [[ -d "/usr/lib/ccache" ]]; then
+    export PATH="/usr/lib/ccache:$PATH"
+fi
+if [[ -d "${HOME}/bin" ]]; then
+    export PATH="${HOME}/bin:$PATH"
+fi
+if [[ -d "${HOME}/w/go" ]]; then
+    export GOPATH="${HOME}/w/go"
+    export PATH=$GOPATH/bin:$PATH
+fi

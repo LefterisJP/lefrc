@@ -15,6 +15,7 @@ cp .Xdefaults ~
 cp .Xmodmap ~
 cp .tmux.conf ~
 cp .offlineimaprc ~
+cp .lefpathsetter ~
 cp keyboard_config.xkb ~/.Xkeymap
 cp ssh_config ~/.ssh/config
 
