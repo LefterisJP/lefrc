@@ -13,3 +13,17 @@ Host refu
    Port 47926
    User realinte
 
+Host whwithdraw
+    Hostname 159.100.249.128
+    Port 54345
+    User lefteris
+
+Host whwithdrawbot
+    Hostname 159.100.249.221
+    Port 54345
+    User lefteris
+
+Host sikorka
+     Hostname sikorka.io
+     Port 1953
+     User lefteris
