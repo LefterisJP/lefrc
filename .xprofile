@@ -28,3 +28,15 @@ test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 if [ -f ~/.Xmodmap ]; then
     xmodmap ~/.Xmodmap
 fi
+
+
+# Use AltGr to allow for writting Umlauts and other special chars. Yay German!
+# https://zuttobenkyou.wordpress.com/2011/08/24/xorg-using-the-us-international-altgr-intl-variant-keyboard-layout/
+# Also set US and Greek keyboard layout and use Right Ctrl + Right Shift to switch between them
+#setxkbmap -rules evdev -model evdev -layout us,el -variant altgr-intl -option grp:rctrl_rshift_toggle
+
+# Configure xautolock to use our blurring script
+xautolock -time 10 -locker ~/.local/bin/my-i3-blur-lock&
+
+# Set the PATH. Has to be set from here to be also visible in other window manager apps like dmenu
+source ~/.lefpathsetter
