@@ -58,6 +58,8 @@ if [[ -f /usr/share/zsh/site-contrib/powerline.zsh ]]; then
     source /usr/share/zsh/site-contrib/powerline.zsh
 elif [[ -f /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+elif [[ -f /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 elif [[ -f /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
 fi
