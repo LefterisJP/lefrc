@@ -16,3 +16,7 @@ if [[ -d "${HOME}/w/go" ]]; then
     export GOPATH="${HOME}/w/go"
     export PATH=$GOPATH/bin:$PATH
 fi
+
+# set android stuff
+export ANDROID_SDK_ROOT=/home/lefteris/hyperion_nas/lefteris_stuff/g/android/sdk
+export ANDROID_HOME=/home/lefteris/hyperion_nas/lefteris_stuff/g/android/sdk
