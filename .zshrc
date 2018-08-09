@@ -65,6 +65,8 @@ elif [[ -f /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
     source /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 elif [[ -f /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
     source /usr/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh
+elif [[ -f /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
+    source /usr/share/powerline/bindings/zsh/powerline.zsh
 fi
 
 
