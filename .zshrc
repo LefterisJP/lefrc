@@ -172,3 +172,39 @@ bindkey "\e\e[C" forward-word
 # ls -l >> NEWFILE.txt
 #########################################
 setopt clobber
+
+# Taken from https://gist.github.com/schmir/4ceefb8d7d27a4b230fd760fd4ab4cc7
+
+# When Tab is pressed on an empty(!) command line, the contents of the
+# directory are printed (`ls`) instead of a menu list of all
+# executables:
+
+function my-hg-report() {
+    tip=$(hg tip 2> /dev/null) || return
+    echo
+    hg --config pager.pager= status
+    echo
+    hg --config pager.pager= log --limit 5 --style compact
+}
+
+function my-git-report() {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "------------------------------------------------------------"
+    git status
+    echo "------------------------------------------------------------"
+    git log --pretty=tformat:"%ae    %ci%C(bold)%d%Creset%n%h: %s%n" -3 --color |cat
+    echo
+}
+
+function complete-or-list() {
+    if [[ $#BUFFER == 0 ]]; then
+        echo
+        ls -F
+        my-git-report || my-hg-report
+        zle reset-prompt
+    else
+        zle expand-or-complete
+    fi
+}
+zle -N complete-or-list
+bindkey '^I' complete-or-list
