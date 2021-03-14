@@ -9,12 +9,17 @@ alias gdbbt="gdb -q -n -ex 'thread apply all bt' -batch"
 
 # normally speciying the socket should not be needed but I think that either
 # emacs --daemon or emacslient has a bug when starting emacs from systemd
+# Specifying the socket is no longer needed after upgrade on 19/08/2020
+# Commented out the old examples with socket name. Can delete them later
 #emacs client in the terminal
-alias ect='emacsclient -t -n --socket-name /tmp/emacs1000/server'
+#alias ect='emacsclient -t -n --socket-name /tmp/emacs1000/server'
+alias ect='emacsclient -t -n'
 # gui emacs client new frame
-alias ecn='emacsclient -n -c --socket-name /tmp/emacs1000/server'
+#alias ecn='emacsclient -n -c --socket-name /tmp/emacs1000/server'
+alias ecn='emacsclient -n -c'
 # gui emacs client existing frame
-alias ecx='emacsclient -n --socket-name /tmp/emacs1000/server'
+#alias ecx='emacsclient -n --socket-name /tmp/emacs1000/server'
+alias ecx='emacsclient -n'
 
 # recursively delete emacs autosave files under current dir
 alias rmeauto='find ./ -type f -name "#*#" -exec rm {} \;'
@@ -26,3 +31,6 @@ alias sctlu='systemctl --user'
 # --- git aliases
 alias gitlateci='my-git-late-ci'
 alias gitamendlasttonow='GIT_COMMITTER_DATE="`date`" git commit --amend --date "`date`"'
+
+# pacman aliases
+alias paclistsize="pacman -Qeti | awk '/^Name/{name=\$3} /^Installed Size/{print \$4\$5, name}' | sort -hr"
