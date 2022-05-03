@@ -37,6 +37,8 @@ export ETHEREUM_TEST_PATH=/home/lefteris/ew/tests/
 export NODE_PATH=~/.npm-global/bin
 # Add npm global dir to path
 export PATH=~/.npm-global/bin:$PATH
+# Add ruby gems to the path
+export PATH=~/.gem/ruby/2.6.0/bin:$PATH
 
 # - enable zsh history -
 
