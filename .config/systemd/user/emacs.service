@@ -1,7 +1,10 @@
 [Unit]
 Description=Emacs: the extensible, self-documenting text editor
+Requires=dbus.socket
+After=dbus.socket
 
 [Service]
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=%t/bus
 Type=forking
 ExecStart=/usr/bin/emacs --daemon
 ExecStop=/usr/bin/emacsclient --eval "(progn (setq kill-emacs-hook 'nil) (kill-emacs))"
