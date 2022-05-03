@@ -43,9 +43,9 @@ export PATH=~/.gem/ruby/2.6.0/bin:$PATH
 # - enable zsh history -
 
 # maximum number of lines that are kept in a session
-HISTSIZE=1000
+HISTSIZE=2000
 # maximum number of lines that are kept in the history file
-SAVEHIST=1000
+SAVEHIST=2000
 HISTFILE=~/.zhistory
 
 # source my aliases
@@ -210,6 +210,7 @@ function complete-or-list() {
 }
 zle -N complete-or-list
 bindkey '^I' complete-or-list
+source /usr/share/nvm/init-nvm.sh
 
 ## Taken from https://github.com/nvm-sh/nvm#automatically-call-nvm-use
 autoload -U add-zsh-hook
