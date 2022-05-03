@@ -7,13 +7,13 @@ udiskie &
 xbindkeys
 
 # for the desktop set the refresh rate
-if [ $HOSTNAME == "archdesktop" ]; then
-    # also set the 120HZ refresh rate
-    xrandr --output DVI-I-1 --mode 0x281
+if [[ $HOSTNAME == "archdesktop" ]]; then
+    # also set the 120HZ refresh rate and resolution
+    xrandr --output DVI-I-1 --mode "1920x1080" --rate 120
 fi
 
 #for the laptop let's disable touchpad when typing
-if [ $HOSTNAME == "archlenovo" ]; then
+if [[ $HOSTNAME == "archlenovo" ]]; then
     # more info here: https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Using_.xinitrc
     syndaemon -t -k -i 2 -d &
 fi
@@ -25,7 +25,7 @@ test -f ~/.Xkeymap && xkbcomp ~/.Xkeymap $DISPLAY
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # If there is an .Xmodmap load it
-if [ -f ~/.Xmodmap ]; then
+if [[ -f ~/.Xmodmap ]]; then
     xmodmap ~/.Xmodmap
 fi
 
