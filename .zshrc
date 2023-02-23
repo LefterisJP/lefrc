@@ -39,6 +39,8 @@ export NODE_PATH=~/.npm-global/bin
 export PATH=~/.npm-global/bin:$PATH
 # Add ruby gems to the path
 export PATH=~/.gem/ruby/2.6.0/bin:$PATH
+# Add cargo to the path
+export PATH=/home/lefteris/.cargo/bin:$PATH
 
 # - enable zsh history -
 
