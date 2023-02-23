@@ -236,3 +236,23 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# git repository greeter from: https://github.com/o2sh/onefetch/wiki/getting-started
+last_repository=
+check_directory_for_new_repository() {
+    if hash onefetch 2>/dev/null; then
+        current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+        if [ "$current_repository" ] && [ "$current_repository" != "$last_repository" ]; then
+                onefetch
+        fi
+        last_repository=$current_repository
+    fi
+}
+function cd() {
+    builtin cd "$@"
+    check_directory_for_new_repository
+}
+# optional, greet also when opening shell directly in repository directory
+# adds time to startup
+check_directory_for_new_repository
