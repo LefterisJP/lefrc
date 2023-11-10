@@ -5,7 +5,8 @@ WGET=/usr/bin/wget
 ICS2ORG=/home/lefteris/.local/bin/ical2org.awk
 ICSFILE=~/org/calendars/googlecal.ics
 ORGFILE=~/org/calendars/googlecal.org
-URL=https://www.google.com/calendar/ical/lefterisjp%40gmail.com/private-357fc2ac62c5a2e02827193a83b03279/basic.ics
+# Fin in https://calendar.google.com/calendar/u/0/r/settings/calendar/ and customize after copying the file. Do not commit
+URL=PUPRIVATEICALGMAILLINKHERE
 
 # no customization needed below
 
