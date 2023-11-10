@@ -56,7 +56,7 @@ function determine-location() {
 
     if [[ $__hostname == "archdesktop" ]]; then
         return 1
-    elif [[ $__hostname == "archlenovo" ]]; then
+    elif [[ $__hostname == "archlenovo" ||  $__hostname == "archframework13" ]]; then
         if [[ $__etc_issue =~ ".*Debian GNU/Linux.*" ]]; then
             return 3
         fi
