@@ -6,9 +6,7 @@ cp .zsh_aliases ~
 cp .zsh_functions ~
 cp .systemd_user.zsh ~
 cp .gitconfig ~
-cp .hgrc ~
 cp .ackrc ~
-cp .xinitrc ~
 cp .xprofile ~
 cp .Xresources ~
 cp .Xdefaults ~
