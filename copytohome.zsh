@@ -66,6 +66,9 @@ cp -r .local/bin/* ~/.local/bin/
 if [[ `hostname` == "robaczek" ]]; then
     cp ./.conkyrc_work ~/.conkyrc
     cp .xbindkeysrc_laptop ~/.xbindkeysrc
+elif [[ `hostname` == "archframework13" ]]; then
+    cp ./.conkyrc_work ~/.conkyrc
+    cp .xbindkeysrc_archframework13 ~/.xbindkeysrc
 else
     cp ./.conkyrc_home ~/.conkyrc
     cp .xbindkeysrc_home ~/.xbindkeysrc

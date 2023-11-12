@@ -33,6 +33,11 @@ networkmanager-openvn   -> and get the vpn conf
 - acpi
 - clight (from yay)
 
+
+### xkeybindings
+
+Install python-dbus for the clight control script.
+
 ### Audio
 
 - pulseaudio

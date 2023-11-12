@@ -1,0 +1,19 @@
+# Bind the calculator button of the desktop keyboard to changing keyboard layout
+"~/.local/bin/toggle-keyboard-layout.sh"
+    m:0x0 + c:148
+
+"pamixer --increase 10"
+    XF86AudioRaiseVolume
+
+"pamixer --decrease 10"
+    XF86AudioLowerVolume
+
+"~/.local/bin/clight_adjust.py -inc"
+    XF86MonBrightnessUp
+
+"~/.local/bin/clight_adjust.py -dec"
+    XF86MonBrightnessDown
+
+# Bind the lock button of lenovo t540p to lock the screen
+"~/.local/bin/my-i3-blur-lock"
+    m:0x40 + c:46
