@@ -115,6 +115,13 @@ bindsym $sup+Shift+0 move container to workspace 10
 bindsym $sup+Mod1+Left move workspace to output left
 bindsym $sup+Mod1+Right move workspace to output right
 
+# to control media (also need to have playerctl. Good idea to use playerctldaemon and have it as auto enabled service)
+# https://wiki.archlinux.org/title/MPRIS
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # reload the configuration file
 bindsym $sup+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
